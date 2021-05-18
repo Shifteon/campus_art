@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 secret = open(os.path.join(sys.path[0], "secretkey.txt"), "r")
 SECRET_KEY = secret.read()
-print(secret.read())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
