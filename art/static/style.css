@@ -1,0 +1,129 @@
+html {
+    font-size: 16px;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 100%;
+    background-color: #0076B6;
+    height: 3em;
+}
+
+#navigation {
+    margin: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    align-content: center;
+    justify-items: center;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#navigation li {
+    height: 100%;
+}
+
+#navigation a {
+    display: block;
+    padding: .91rem;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+#navigation a:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+footer {
+    width: 100%;
+    background-color: #0076B6;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* card styles */
+.card-grid {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    padding-bottom: 3%;
+    margin-top: 2em;
+    grid-gap: 2em;
+}
+
+.new-floor {
+    grid-column: 1/-1;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+hr {
+    height: 2px;
+    border-width: 0;
+    color: gray;
+    background-color: gray;
+    width: 100%;
+}
+
+.card {
+    width: 320px;
+    border-radius: 3px 3px 3px 3px;
+    background-color: white;
+    overflow: hidden;
+    margin-top: 3%;
+    transition: 500ms;
+    min-height: 390px;
+    max-height: 390px;
+}
+
+.card:hover {
+    box-shadow: 5px 3px 3px lightgray;
+    transform: scale(1.1);
+    z-index: 3;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-a {
+    display: grid;
+    grid-template-rows: 1fr;
+    text-decoration: none;
+    color: black;
+}
+
+.card-a:hover {
+    text-decoration: none;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.card-body {
+    padding: 0px 15px 15px 15px;
+}
+
+/* end card styles */
