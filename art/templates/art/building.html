@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}My amazing blog{% endblock %}
+{% block title %}Building{% endblock %}
 
 {% block content %}
-<div class="new-floor">
-  <p>Floor 1</p>
-  <hr>
-</div>
 <section class="card-grid">
   {% for num in numbers %}
   {% if num|divisibleby:8 %}
   <div class="new-floor">
-    <p>Floor {{ num }}</p>
+    <p>Floor {{ num|add:1 }}</p>
     <hr>
   </div>
   {% endif %}
