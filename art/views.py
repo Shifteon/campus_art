@@ -1,11 +1,5 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-
-# Create your views here.
-=======
-from. models import Building_Name,Category,Artwork
-
-# Create your views here.
+from .models import Building_Name, Category, Artwork
 
 # An index card version of the artwork
 def art_index(request):
@@ -41,4 +35,3 @@ def art_building(request, building):
         "artwork": artwork
     }
     return render(request, "art_building.html", context)
->>>>>>> e99d7ae0937b439555fef499770cc18157befbf4

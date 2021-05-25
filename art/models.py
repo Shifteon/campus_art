@@ -1,9 +1,5 @@
 from django.db import models
 
-# Create your models here.
-<<<<<<< HEAD
-=======
-
 # Model for the name of which building the artwork is in
 class Building_Name(models.Model):
     name = models.CharField(max_length=100)
@@ -25,4 +21,3 @@ class Artwork(models.Model):
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
     categories = models.ManyToManyField('Category',related_name='artwork')
->>>>>>> e99d7ae0937b439555fef499770cc18157befbf4
