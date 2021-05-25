@@ -20,6 +20,7 @@ from django.urls import path, include # new
 from django.conf.urls.static import static # new
 
 urlpatterns = [
+    path('art/', include('art.urls')),
     path('admin/', admin.site.urls),
     path('', include('art.urls')),
 ]

@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from. models import Building_Name,Category,Artwork
 
-# Create your views here.
-
 # An index card version of the artwork
 def art_index(request):
     artwork = Artwork.objects.all().order_by('-title')
