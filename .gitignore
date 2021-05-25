@@ -1,5 +1,6 @@
 'venv' 
 'secretkey'
+secretkey.txt
 'art/migrations'
 'art/__pycache__'
 'campus_art/__pycache__'
