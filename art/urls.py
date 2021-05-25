@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app = 'art'
 urlpatterns = [
-    path('building/', views.building, name='building')
-]
+    path("", views.art_index, name="art_index"),
+    path("<category>/", views.art_category, name="art_category"),
+    path("<buildingy>/", views.art_building, name="art_building"),
