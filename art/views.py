@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from .models import Building_Name, Category, Artwork
 
 # An index card version of the artwork
@@ -39,3 +40,9 @@ def art_building(request, building):
         "numbers": numbers
     }
     return render(request, "art_building.html", context)
+
+
+class ArtworkListView(ListView):
+    model = Artwork
+    template_name = 'art_index.html'
+    context_object_name = "artwork"

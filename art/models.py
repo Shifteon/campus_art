@@ -12,12 +12,22 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+# Model for the artist. This model is to reduce redundancy.
+class Artist(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.first_name + " " + self.last_name
+
 # Model for the Artwork includes title, artist name, year created, picture, 
 # building and category/categories
 class Artwork(models.Model):
     title = models.CharField(max_length=255)
-    artist_name = models.CharField(max_length=55)
+    artist_name = models.ForeignKey(Artist, on_delete=models.CASCADE)
     year_created = models.IntegerField()
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
-    categories = models.ManyToManyField('Category',related_name='artwork')
+    categories = models.ManyToManyField('Category', related_name='artwork')
+
+    def __str__(self):
+        return self.title
