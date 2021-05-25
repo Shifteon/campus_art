@@ -10,18 +10,16 @@ def art_index(request):
     return render(request, "art_index.html", context)
 
 # Artwork organized by building
-#Show blog posts in specific category
+#Show artwork posts in specific category
 def art_category(request, category):
     artwork = Artwork.objects.filter(
         categories__name__contains=category
     ).order_by(
         '-title'
     )
-    numbers = range(0, 20)
     context = {
         "category": category,
-        "artwork": artwork,
-        "numbers": numbers
+        "artwork": artwork
     }
     return render(request, "art_category.html", context)
 
@@ -32,7 +30,7 @@ def art_building(request, building):
     ).order_by(
         '-title'
     )
-    numbers = range(0, 20)
+    numbers = range(0, 20) # this is for testing
     context = {
         "building": building,
         "artwork": artwork,
