@@ -17,9 +17,11 @@ def art_category(request, category):
     ).order_by(
         '-title'
     )
+    numbers = range(0, 20)
     context = {
         "category": category,
-        "artwork": artwork
+        "artwork": artwork,
+        "numbers": numbers
     }
     return render(request, "art_category.html", context)
 
@@ -30,8 +32,10 @@ def art_building(request, building):
     ).order_by(
         '-title'
     )
+    numbers = range(0, 20)
     context = {
         "building": building,
-        "artwork": artwork
+        "artwork": artwork,
+        "numbers": numbers
     }
     return render(request, "art_building.html", context)
