@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from. models import Building_Name,Category,Artwork
+from .models import Building_Name, Category, Artwork
 
 # An index card version of the artwork
 def art_index(request):

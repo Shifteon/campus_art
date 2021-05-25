@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 # Model for the name of which building the artwork is in
 class Building_Name(models.Model):
     name = models.CharField(max_length=100)
