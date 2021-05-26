@@ -37,22 +37,32 @@ class ArtCategoryView(ListView):
     # get_context_data enables us to pass data into the html template. 
     def get_context_data(self, *args, **kwargs):
         context = super(ArtCategoryView, self).get_context_data(*args, **kwargs)
-        context['art_context'] = Artwork.objects.filter(categories__name__contains=self.kwargs['category'])
+        context['art_context'] = Artwork.objects.filter(categories__name__contains=self.kwargs['category'])     # What does __name__contains mean?
         # In self.kwargs['category'], 'category' matches up with the <category> parameter in the urls.py document.
         return context
 
 
 # Artwork organized by category
-def art_building(request, building):
-    artwork = Artwork.objects.filter(
-        building__name__contains=building
-    ).order_by(
-        '-title'
-    )
-    numbers = range(0, 20) # this is for testing
-    context = {
-        "building": building,
-        "artwork": artwork,
-        "numbers": numbers
-    }
-    return render(request, "art_building.html", context)
+# def art_building(request, building):
+#     artwork = Artwork.objects.filter(
+#         building__name__contains=building
+#     ).order_by(
+#         '-title'
+#     )
+#     numbers = range(0, 20) # this is for testing
+#     context = {
+#         "building": building,
+#         "artwork": artwork,
+#         "numbers": numbers
+#     }
+#     return render(request, "art_building.html", context)
+
+class ArtBuildingView(ListView):
+    model = Artwork
+    template_name = 'art_building.html'
+    context_object_name = 'artwork'
+
+    def get_context_data(self, **kwargs):   # Do you think it would be possible to give a 404 message if the user navigates to a building that doesn't exist?
+        context = super(ArtBuildingView, self).get_context_data(**kwargs)
+        context['art_context'] = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
+        return context
