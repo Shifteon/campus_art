@@ -27,7 +27,7 @@
     {% for artworks in art_context %}    <!-- The art_context that is being referenced is found in get_context_data for the ArtCategoryView. -->
     <article class="card">
         <a class="card-a" href="" target="_blank">
-            <img src="../media/{{ artworks.picture }}" alt="card-image">
+            <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
             <section class="card-body">
                 <h3>{{ artworks.title }} by {{ artworks.artist_name }}</h3>
                 <p>Categories:{% for category in artworks.categories.all %}<br>{{ category.name }}{% endfor %}</p>
@@ -38,7 +38,7 @@
     {% endfor %}
 </div>
 {% else %}
-No Artwork to display
+  <h1>No Artwork matching criteria.</h1>
 {% endif %}
 
 {% endblock %}
