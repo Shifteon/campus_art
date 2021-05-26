@@ -3,6 +3,7 @@ from django.db import models
 # Model for the name of which building the artwork is in
 class Building_Name(models.Model):
     name = models.CharField(max_length=100)
+    # Should we add a field that describes the number of floors in that building?
     def __str__(self):
         return self.name
 
@@ -28,6 +29,7 @@ class Artwork(models.Model):
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
     categories = models.ManyToManyField('Category', related_name='artwork')
+    # Should we also add a floor field?
 
     def __str__(self):
         return self.title

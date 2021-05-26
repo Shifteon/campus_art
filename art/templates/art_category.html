@@ -1,1 +1,22 @@
-This is the art category page. 
+{% extends "base.html" %}
+
+{% block content %}
+{% if artwork %}
+<div class="card-grid">
+    {% for artworks in art_context %}    <!-- The art_context that is being referenced is found in get_context_data for the ArtCategoryView. -->
+    <article class="card">
+        <a class="card-a" href="" target="_blank">
+            <img src="../media/{{ artworks.picture }}" alt="card-image">
+            <section class="card-body">
+                <h3>{{ artworks.title }} by {{ artworks.artist_name }}</h3>
+                <p>Categories:{% for category in artworks.categories.all %}<br>{{ category.name }}{% endfor %}</p>
+                <p>Buildings: {% for building in artworks.building.all %}{{ building.name }} {% endfor %}</p>
+            </section>
+        </a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+    No Artwork matching criteria.
+{% endif %}
+{% endblock %}
