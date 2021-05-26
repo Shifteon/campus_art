@@ -20,4 +20,4 @@ class Artwork(models.Model):
     year_created = models.IntegerField()
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
-    categories = models.ManyToManyField('Category',related_name='artwork')
+    categories = models.ManyToManyField('Category', related_name='artwork')
