@@ -3,8 +3,9 @@
 {% block title %}Building{% endblock %}
 
 {% block content %}
-<section class="card-grid">
-  {% for num in numbers %}
+{% if artwork %}
+<!-- <section class="card-grid"> -->
+  <!-- {% for num in numbers %}
   {% if num|divisibleby:8 %}
   <div class="new-floor">
     <p>Floor {{ num|add:1 }}</p>
@@ -21,6 +22,23 @@
       </section>
     </a>
   </article>
-  {% endfor %}
-</section>
+  {% endfor %} -->
+  <div class="card-grid">
+    {% for artworks in art_context %}    <!-- The art_context that is being referenced is found in get_context_data for the ArtCategoryView. -->
+    <article class="card">
+        <a class="card-a" href="" target="_blank">
+            <img src="../media/{{ artworks.picture }}" alt="card-image">
+            <section class="card-body">
+                <h3>{{ artworks.title }} by {{ artworks.artist_name }}</h3>
+                <p>Categories:{% for category in artworks.categories.all %}<br>{{ category.name }}{% endfor %}</p>
+                <p>Buildings: {% for building in artworks.building.all %}{{ building.name }} {% endfor %}</p>
+            </section>
+        </a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+No Artwork to display
+{% endif %}
+
 {% endblock %}

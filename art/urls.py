@@ -1,8 +1,9 @@
 from django.urls import path
+from .views import ArtworkListView, ArtCategoryView, ArtBuildingView
 from . import views
 
 urlpatterns = [
-    path("", views.art_index, name="art_index"),
-    path("category/<category>/", views.art_category, name="art_category"),
-    path("building/<building>/", views.art_building, name="art_building"),
+    path("", ArtworkListView.as_view(), name="art_index"),
+    path("category/<category>", ArtCategoryView.as_view(), name="art_category"),
+    path("building/<building>", ArtBuildingView.as_view(), name="art_building"),
 ]
