@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Model for the name of which building the artwork is in
 class Building_Name(models.Model):
@@ -29,7 +30,8 @@ class Artwork(models.Model):
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
     categories = models.ManyToManyField('Category', related_name='artwork')
-    # Should we also add a floor field?
+    floor = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    description = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.title

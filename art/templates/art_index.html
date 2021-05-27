@@ -11,6 +11,7 @@
         <h3>{{ artworks.title }} by {{ artworks.artist_name }}</h3>
         <p>Categories:{% for category in artworks.categories.all %}<br>{{ category.name }}{% endfor %}</p>
         <p>Buildings: {% for building in artworks.building.all %}{{ building.name }} {% endfor %}</p>
+        <p>Description: {{ artworks.description }}</p>
       </section>
     </a>
   </article>

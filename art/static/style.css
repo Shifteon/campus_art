@@ -97,7 +97,7 @@ hr {
     margin-top: 3%;
     transition: 500ms;
     min-height: 390px;
-    max-height: 390px;
+    /* max-height: 390px; */
 }
 
 .card:hover {
