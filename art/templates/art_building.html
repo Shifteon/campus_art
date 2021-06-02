@@ -35,12 +35,12 @@
                 <button class="category-btn drop-btn">Categories +</button>
                 <div class="categories">
                     {% for category in artworks.categories.all %}
-                    <a class="category" href="#">{{ category.name }}</a>
+                    <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
                     {% endfor %}
                 </div>
             </section>
             <section class="card-footer">
-                <small>{{ artworks.artist }}</small>
+                <small>{{ artworks.artist_name }}</small>
             </section>
         </article>
         {% endfor %}
