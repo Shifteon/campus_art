@@ -1,23 +1,53 @@
 {% extends "base.html" %}
 
+{% block title %}Category{% endblock %}
+
 {% block content %}
 {% if artwork %}
-<div class="card-grid">
-  {% for artworks in art_context %}
-  <!-- The art_context that is being referenced is found in get_context_data for the ArtCategoryView. -->
-  <article class="card">
-    <a class="card-a" href="" target="_blank">
-      <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
-      <section class="card-body">
-        <h3>{{ artworks.title }} by {{ artworks.artist_name }}</h3>
-        <p>Categories:{% for category in artworks.categories.all %}<br>{{ category.name }}{% endfor %}</p>
-        <p>Buildings: {% for building in artworks.building.all %}{{ building.name }} {% endfor %}</p>
-      </section>
-    </a>
-  </article>
-  {% endfor %}
-</div>
+
+<main>
+    <section class="side-thing">
+        <h2>Filter</h2>
+        <label for="floor">Floor</label>
+        <select name="floor" id="floor">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button class="filter-category-btn drop-btn">Categories +</button>
+        <div class="filter-category">
+            <a class="category" href="#">Impressionism</a>
+            <a class="category" href="#">Flowers</a>
+            <a class="category" href="#">Cool</a>
+            <a class="category" href="#">Purple</a>
+            <a class="category" href="#">Garden</a>
+        </div>
+    </section>
+    <div class="card-grid art">
+        {% for artworks in art_context %}
+        <article class="card">
+            <a class="card-a" href="">
+                <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
+            </a>
+            <section class="card-body">
+                <h2>{{ artworks.title }}</h2>
+                <button class="category-btn drop-btn">Categories +</button>
+                <div class="categories">
+                    {% for category in artworks.categories.all %}
+                    <a class="category" href="#">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </section>
+            <section class="card-footer">
+                <small>{{ artworks.artist }}</small>
+            </section>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% else %}
-  <h1>No Artwork matching criteria.</h1>
+<h1>No Artwork matching criteria.</h1>
 {% endif %}
+
 {% endblock %}
