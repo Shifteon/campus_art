@@ -24,14 +24,14 @@ class Artist(models.Model):
 # Model for the Artwork includes title, artist name, year created, picture, 
 # building and category/categories
 class Artwork(models.Model):
-    title = models.CharField(max_length=255)
-    artist_name = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    year_created = models.IntegerField()
+    title = models.CharField(max_length=255, blank=True)
+    artist_name = models.ForeignKey(Artist, null=True, blank=True, on_delete=models.CASCADE)
+    year_created = models.IntegerField(null=True, blank=True)
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
     categories = models.ManyToManyField('Category', related_name='artwork')
     floor = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    description = models.CharField(max_length=500, null=True, blank=True)
+    description = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
         return self.title
