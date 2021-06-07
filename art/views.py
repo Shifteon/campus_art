@@ -66,3 +66,14 @@ class ArtBuildingView(ListView):
         context = super(ArtBuildingView, self).get_context_data(**kwargs)
         context['art_context'] = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
         return context
+
+
+# For the map page
+#class CampusMapView(ListView):
+#    model = Artwork
+#    template_name = 'art_map.html'
+#    context_object_name = 'artwork'
+
+def map(request):
+    return render(request, "map.html")
+

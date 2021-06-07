@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Map{% endblock %}
+
+{% block content %}
+
+    <head>
+        <style>
+            html,
+            body,
+            #viewDiv {
+              padding: 0;
+              margin: 0;
+              height: 100%;
+              width: 100%;
+            }
+        </style>
+        <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+        <script src="https://js.arcgis.com/4.19/"></script>
+
+        <script>
+            require(["esri/Map", "esri/views/MapView",   
+            "esri/Graphic", "esri/layers/GraphicsLayer"], function (Map, MapView, Graphic, GraphicsLayer) {
+                const map = new Map({
+                    basemap: "topo-vector" // Basemap layer service
+                });
+
+                const view = new MapView({
+                    map: map,
+                    center: [-111.78541227387124, 43.81977355229817],  // Longitude, latitude
+                    zoom: 17, // Zoom level
+                    container: "viewDiv" // Div element
+                });
+
+                // Create and add a GraphicsLayer to store graphics
+                const graphicsLayer = new GraphicsLayer();
+                map.add(graphicsLayer);
+
+                const point = { //Create a point
+                    type: "point",
+                    longitude: -111.78469344183378,
+                    latitude: 43.81856593101695
+                };
+                const simpleMarkerSymbol = {
+                    type: "simple-marker",
+                    color: [226, 119, 40],  // Orange
+                    outline: {
+                        color: [255, 255, 255], // White
+                        width: 1
+                    }
+                };
+
+                // Display the point
+                const pointGraphic = new Graphic({
+                    geometry: point,
+                    symbol: simpleMarkerSymbol
+                });
+                graphicsLayer.add(pointGraphic);
+
+
+            });
+
+            
+        </script>
+    </head>
+
+    <body>
+        <body>
+            <div id="viewDiv"></div>
+        </body>
+    </body>
+{% endblock content %}
