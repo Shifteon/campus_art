@@ -30,7 +30,7 @@ class Artwork(models.Model):
     picture = models.ImageField(upload_to="pictures/")
     building = models.ManyToManyField('Building_Name', related_name='artwork')
     categories = models.ManyToManyField('Category', related_name='artwork')
-    floor = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    floor = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=1)
     description = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
