@@ -7,5 +7,4 @@ urlpatterns = [
     path("category/<category>", ArtCategoryView.as_view(), name="art_category"),
     path("building/<building>", ArtBuildingView.as_view(), name="art_building"),
     path("map/", views.map, name="art_map"),
-
 ]
