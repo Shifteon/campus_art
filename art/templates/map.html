@@ -58,13 +58,11 @@
                 geometry: point,
                 symbol: simpleMarkerSymbol
             });
+            // Create a popup with a link
+            // The link is currently broken
             pointGraphic.popupTemplate = {
                 "title": "Building",
                 "content": "I-Center<br><a href=\"{% url 'art_building' 'i-center' %}\">Buidling</a>",
-                "actions": [{
-                    "id": "find-building",
-                    "tile": "Go to building",
-                }]
             }
             graphicsLayer.add(pointGraphic);
 
@@ -78,11 +76,12 @@
         <div id="viewDiv"></div>
     </body>
     <script>
-        let button = document.querySelector(".esri-popup__button");
-        console.log(button);
-        let link = document.createElement('a');
-        link.href = "{% url 'art_building' 'i-center' %}";
-        button.appendChild(link);
+        // Ignore all this for now
+        // let button = document.querySelector(".esri-popup__button");
+        // console.log(button);
+        // let link = document.createElement('a');
+        // link.href = "{% url 'art_building' 'i-center' %}";
+        // button.appendChild(link);
     </script>
 </body>
 {% endblock content %}
