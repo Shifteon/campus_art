@@ -51,7 +51,18 @@
                 }
             };
 
-            let url = "\"{% url 'art_building' 'i-center' %}\"";
+            // This gets us the domain name
+            let root = "{{ request.build_absolute_uri }}";
+            // Prepare root for adding the path
+            let position = root.search("/map/");
+            root = root.substr(0, position);
+            // Get the path
+            let path = "{% url 'art_building' 'i-center' %}";
+            // Create the url
+            let url = "\"" + root + path + "\"";
+
+            // Set popup content
+            let content = "I-Center<br><a href=" + url + ">Buidling</a>";
 
             // Display the point
             const pointGraphic = new Graphic({
@@ -59,10 +70,9 @@
                 symbol: simpleMarkerSymbol
             });
             // Create a popup with a link
-            // The link is currently broken
             pointGraphic.popupTemplate = {
                 "title": "Building",
-                "content": "I-Center<br><a href=\"{% url 'art_building' 'i-center' %}\">Buidling</a>",
+                "content": content
             }
             graphicsLayer.add(pointGraphic);
 
@@ -75,13 +85,5 @@
     <body>
         <div id="viewDiv"></div>
     </body>
-    <script>
-        // Ignore all this for now
-        // let button = document.querySelector(".esri-popup__button");
-        // console.log(button);
-        // let link = document.createElement('a');
-        // link.href = "{% url 'art_building' 'i-center' %}";
-        // button.appendChild(link);
-    </script>
 </body>
 {% endblock content %}
