@@ -7,7 +7,7 @@
 
 <main>
     <section class="side-thing">
-        <h2>Filter</h2>
+        <h2>Filter <span id="filter-extend">+</span></h2>
         <label for="floor">Floor</label>
         <select name="floor" id="floor">
             <option value="1">1</option>
@@ -17,11 +17,9 @@
         </select>
         <button class="filter-category-btn drop-btn">Categories +</button>
         <div class="filter-category">
-            <a class="category" href="#">Impressionism</a>
-            <a class="category" href="#">Flowers</a>
-            <a class="category" href="#">Cool</a>
-            <a class="category" href="#">Purple</a>
-            <a class="category" href="#">Garden</a>
+            {% for category in art_context.categories %}
+            <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+            {% endfor %}
         </div>
     </section>
     <div class="card-grid art">

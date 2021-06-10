@@ -3,6 +3,7 @@
 
 html {
     font-size: 16px;
+    width: 100%;
 }
 
 body {
@@ -53,6 +54,10 @@ nav {
     justify-self: end;
 }
 
+#navigation li:nth-of-type(1) {
+    display: none;
+}
+
 #navigation li {
     height: 4em;
     width: 100%;
@@ -78,7 +83,8 @@ footer {
     background-color: #0076B6;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 main {
@@ -108,6 +114,10 @@ main {
     text-align: center;
     overflow: hidden;
     transition: 300ms;
+}
+
+#filter-extend {
+    display: none;
 }
 
 .side-thing.past-nav {

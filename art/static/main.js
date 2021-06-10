@@ -1,7 +1,7 @@
 /**
  *   Function to display the categories
  */
- function displayCategories() {
+function displayCategories() {
     let btns = document.querySelectorAll('.category-btn');
     let categories = document.querySelectorAll('.categories');
     // console.log(btns.length);
@@ -60,6 +60,29 @@ function moveSideThing() {
     });
 }
 
+function openFilter() {
+    const btn = document.querySelector('#filter-extend');
+    const filter = document.querySelector('.side-thing');
+
+    btn.addEventListener('click', () => {
+        filter.classList.toggle('open');
+        if (filter.classList.contains('open'))
+            btn.innerHTML = '-';
+        else
+            btn.innerHTML = '+';
+    });
+}
+
+function openNav() {
+    // Create responsive nav
+    const hambutton = document.querySelector('.ham');
+    const mainnav = document.querySelector('#navigation');
+
+    hambutton.addEventListener('click', () => {
+        mainnav.classList.toggle('responsive');
+    }, false);
+}
+
 
 /**
  *   Called when the window is loaded.
@@ -70,4 +93,6 @@ window.addEventListener('load', () => {
     displayCategories();
     displayFilterCategories();
     moveSideThing();
+    openNav();
+    openFilter();
 })
