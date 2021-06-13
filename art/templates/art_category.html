@@ -17,11 +17,9 @@
         </select>
         <button class="filter-category-btn drop-btn">Categories +</button>
         <div class="filter-category">
-        
             {% for category in category_names %}
             <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
             {% endfor %}
-    
         </div>
     </section>
     <div class="card-grid art">

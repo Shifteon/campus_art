@@ -31,6 +31,23 @@ class ArtBuildingView(ListView):
     def get_context_data(self, **kwargs):   # Do you think it would be possible to give a 404 message if the user navigates to a building that doesn't exist?
         context = super(ArtBuildingView, self).get_context_data(**kwargs)
         context['art_context'] = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
+        context['category_names'] = Category.objects.all()
+        return context
+
+
+class ArtBuildingCategoryView(ListView):
+    model = Artwork
+    template_name = 'art_building_category.html'
+    context_object_name = 'artwork'
+
+    def get_context_data(self, **kwargs):   # Do you think it would be possible to give a 404 message if the user navigates to a building that doesn't exist?
+        context = super(ArtBuildingCategoryView, self).get_context_data(**kwargs)
+        building_art = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
+        context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'])
+
+        # context['art_context'] = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
+        # context['art_context'] = Artwork.objects.filter(categories__name__contains=self.kwargs['category'])  
+        context['category_names'] = Category.objects.all()
         return context
 
 
