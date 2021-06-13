@@ -102,10 +102,21 @@
         display: none;
         grid-template-columns: 1fr;
         text-align: center;
-        width: 150px;
+        width: 300px;
         box-shadow: 3px 3px 3px lightgray;
         background-color: #fffdff;
         z-index: 100;
+        padding-bottom: 1em;
+    }
+
+    .small-filter select {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .small-filter button, .small-filter div {
+        padding: 1em;
+        padding-bottom: 0;
     }
 
     .small-filter.display {
