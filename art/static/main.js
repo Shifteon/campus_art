@@ -83,6 +83,31 @@ function openNav() {
     }, false);
 }
 
+function smallFilter() {
+    const btn = document.querySelector('#filter-btn');
+    const filter = document.querySelector('.small-filter');
+    const filterBtn = document.querySelector('.small-filter-category-btn');
+    const smallFilter = document.querySelector('.small-filter-category');
+
+    btn.addEventListener('click', () => {
+        filter.classList.toggle('display');
+        btn.classList.toggle('clicked');
+        if (btn.classList.contains('clicked')) {
+            btn.innerHTML = '-';
+        } else {
+            btn.innerHTML = '+';
+        }
+    });
+
+    filterBtn.addEventListener('click', () => {
+        smallFilter.classList.toggle('display');
+        if (smallFilter.classList.contains('display')) {
+            filterBtn.innerHTML = 'Categories -';
+        } else {
+            filterBtn.innerHTML = 'Categories +';
+        }
+    });
+}
 
 /**
  *   Called when the window is loaded.
@@ -95,4 +120,5 @@ window.addEventListener('load', () => {
     moveSideThing();
     openNav();
     openFilter();
+    smallFilter();
 })

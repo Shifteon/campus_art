@@ -36,9 +36,24 @@ nav {
     margin: 0 auto;
 }
 
+#logo-box {
+    display: grid;
+    grid-template-columns: 100px 100px;
+}
+
 #logo-box img {
     width: 75px;
     padding: .5em;
+}
+
+#logo-box h1 {
+    display: inline-block;
+    color: white;
+    align-self: center;
+    margin: 0;
+    border-left: 1px solid white;
+    padding-left: 10px;
+    font-size: 1.5em;
 }
 
 #navigation {
@@ -91,6 +106,7 @@ main {
     height: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
+    margin-bottom: 100px;
 }
 
 .art {
@@ -152,6 +168,14 @@ main {
 
 .filter-category.display {
     display: block;
+}
+
+.small-filter {
+    display: none;
+}
+
+#filter-btn {
+    display: none;
 }
 
 /* card styles */

@@ -43,6 +43,23 @@
         </article>
         {% endfor %}
     </div>
+    <section class="small-filter">
+        <h3>Filter</h3>
+        <label for="floor">Floor</label>
+        <select name="floor" id="floor">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button class="small-filter-category-btn drop-btn">Categories +</button>
+        <div class="small-filter-category">
+            {% for category in category_names %}
+            <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </section>
+    <button id="filter-btn">+</button>
 </main>
 {% else %}
 <h1>No Artwork matching criteria.</h1>
