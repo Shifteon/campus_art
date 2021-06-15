@@ -57,7 +57,7 @@
             let position = root.search("/map/");
             root = root.substr(0, position);
             // Get the path
-            let path = "{% url 'art_building' 'i-center' %}";
+            let path = "{% url 'art_building_category' 'i-center' 'all' %}";
             // Create the url
             let url = "\"" + root + path + "\"";
 

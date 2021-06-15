@@ -10,3 +10,5 @@ def building_change_category(value, arg):
 
     value = value[first_slash:second_slash + 1] + arg
     return value
+
+    # TODO: Figure out why the /all/all page does not return paintings with no title

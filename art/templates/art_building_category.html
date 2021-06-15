@@ -27,7 +27,7 @@
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
         {% for category in category_names %}
-        <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+            <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
         {% endfor %}
       </div>
     </section>
@@ -41,9 +41,9 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
-            {% for category in artworks.categories.all %}
+            {% for category in category_names %}
             {% if category.name != "All" %}
-            <!-- Does not display "All" category -->
+            <!-- Does not display "All" category, that would not look good in my opinion -->
             <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
             {% endif %}
             {% endfor %}
@@ -68,7 +68,7 @@
     <button class="small-filter-category-btn drop-btn">Categories +</button>
     <div class="small-filter-category">
       {% for category in category_names %}
-      <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+      <a class="category" href="#">{{ category.name }}</a>
       {% endfor %}
     </div>
   </section>
