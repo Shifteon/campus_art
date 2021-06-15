@@ -8,7 +8,8 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Noto Sans JP', sans-serif;
+    /* font-family: 'Noto Sans JP', sans-serif; */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 100%;
     overflow-x: hidden;
 }
@@ -104,9 +105,16 @@ footer {
 
 main {
     height: 100%;
+    margin-bottom: 100px;
+}
+
+.main {
     display: grid;
     grid-template-columns: 20% 80%;
-    margin-bottom: 100px;
+}
+
+.building-name {
+    margin-left: 3em;
 }
 
 .art {
@@ -125,7 +133,7 @@ main {
     margin-left: 1em;
     position: fixed;
     left: 0;
-    top: 8%;
+    top: 15%;
     border-radius: .3em;
     text-align: center;
     overflow: hidden;
@@ -137,7 +145,7 @@ main {
 }
 
 .side-thing.past-nav {
-    top: 5%;
+    top: 15%;
     margin-top: 0;
 }
 

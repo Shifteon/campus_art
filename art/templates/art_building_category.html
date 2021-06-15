@@ -7,47 +7,55 @@
 {% if artwork %}
 
 <main>
-  <!-- <h1>I-Center</h1> -->
-  <section class="side-thing">
-    <h2>Filter <span id="filter-extend">+</span></h2>
-    <label for="floor">Floor</label>
-    <select name="floor" id="floor">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-    <button class="filter-category-btn drop-btn">Categories +</button>
-    <div class="filter-category">
-      {% for category in category_names %}
-      <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+  <h1 class="building-name">I-Center</h1>
+  <div class="main">
+    <section class="side-thing">
+      <h2>Filter <span id="filter-extend">+</span></h2>
+      <label for="floor">Floor</label>
+      <select name="floor" id="floor">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <label for="building">Buildings</label>
+      <select name="building" id="building">
+        {% for name in building_names %}
+        <option value="1">{{ name.name }}</option>
+        {% endfor %}
+      </select>
+      <button class="filter-category-btn drop-btn">Categories +</button>
+      <div class="filter-category">
+        {% for category in category_names %}
+        <a class="category" href="{% url 'art_category' category.name %}">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="card-grid art">
+      {% for artworks in art_context %}
+      <article class="card">
+        <a class="card-a" href="">
+          <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
+        </a>
+        <section class="card-body">
+          <h2>{{ artworks.title }}</h2>
+          <button class="category-btn drop-btn">Categories +</button>
+          <div class="categories">
+            {% for category in artworks.categories.all %}
+            {% if category.name != "All" %}
+            <!-- Does not display "All" category -->
+            <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+        <section class="card-footer">
+          <small>{{ artworks.artist_name }}</small>
+        </section>
+      </article>
       {% endfor %}
-    </div>
-  </section>
-  <section class="card-grid art">
-    {% for artworks in art_context %}
-    <article class="card">
-      <a class="card-a" href="">
-        <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
-      </a>
-      <section class="card-body">
-        <h2>{{ artworks.title }}</h2>
-        <button class="category-btn drop-btn">Categories +</button>
-        <div class="categories">
-          {% for category in artworks.categories.all %}
-          {% if category.name != "All" %}
-          <!-- Does not display "All" category -->
-          <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
-          {% endif %}
-          {% endfor %}
-        </div>
-      </section>
-      <section class="card-footer">
-        <small>{{ artworks.artist_name }}</small>
-      </section>
-    </article>
-    {% endfor %}
-  </section>
+    </section>
+  </div>
   <section class="small-filter">
     <h3>Filter</h3>
     <label for="floor">Floor</label>

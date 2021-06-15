@@ -47,8 +47,17 @@ class ArtBuildingCategoryView(ListView):
 
         # context['art_context'] = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
         # context['art_context'] = Artwork.objects.filter(categories__name__contains=self.kwargs['category'])  
-        context['category_names'] = Category.objects.all()
+        context['category_names'] = Category.objects.all().order_by('name')
+        context['building_names'] = Building_Name.objects.all().order_by('name')
         return context
+
+class BuildingListView(ListView):
+    model = Building_Name
+    template_name = 'buildings.html'
+    context_object_name = 'buildings'
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
 
 
 # For the map page
