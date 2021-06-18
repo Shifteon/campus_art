@@ -52,6 +52,8 @@ class ArtBuildingCategoryView(ListView):
         context['building_names'] = Building_Name.objects.all().order_by('name')
         return context
 
+# Add another view, use an if statement, change database
+
 class BuildingListView(ListView):
     model = Building_Name
     template_name = 'buildings.html'

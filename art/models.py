@@ -5,6 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Building_Name(models.Model):
     name = models.CharField(max_length=100)
     # Should we add a field that describes the number of floors in that building?
+    num_floors = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=1)
     def __str__(self):
         return self.name
 
