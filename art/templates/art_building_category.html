@@ -12,14 +12,14 @@
     <section class="side-thing">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <label for="floor">Floor</label>
-      <select name="floor" id="floor">
+      <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
       <label for="building">Buildings</label>
-      <select name="building" id="building" onchange="javascript:handleSelect(this)">
+      <select name="building" id="building" onchange="javascript:buildingSelect(this)">
         {% for name in building_names %}
         <option value="{{ 0|get_building_name:name.name }}"><a href="{{ request.path|change_building:name.name }}">{{ name.name }}</option></a>
         {% endfor %}
@@ -28,7 +28,7 @@
       <!-- Ben: I make this script for you. It allows us to change the building we are in without changing the category.
       I'm sorry; I didn't mean to take your job. :) -Kyler -->
       <script type="text/javascript"> 
-        function handleSelect(elm) 
+        function buildingSelect(elm) 
         { 
           let x = window.location.href
           let count = 0
@@ -43,6 +43,21 @@
           x = x.replace(building, elm.value)
           window.location = x
         } 
+        function floorSelect(elm) 
+        { 
+          let x = window.location.href
+          let count = 0
+          for (i= 0; i < x.length; i++) {
+            if (x[i] == '/' && i > 7) {
+              count++
+              if (count == 3) { var thirdSlash = i }
+            }
+          }
+          let floor = x.substring(thirdSlash, thirdSlash + 3)
+          x = x.replace(floor, "/" + elm.value)
+          window.location = x
+          // TODO: This can be modified to allow it to change categories to all.
+        } 
       </script> 
 
       <button class="filter-category-btn drop-btn">Categories +</button>
@@ -56,7 +71,7 @@
       {% for artworks in art_context %}
       <article class="card">
         <a class="card-a" href="">
-          <img src="../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
+          <img src="../../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
         </a>
         <section class="card-body">
           <h2>{{ artworks.title }}</h2>
