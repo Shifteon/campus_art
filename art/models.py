@@ -35,4 +35,7 @@ class Artwork(models.Model):
     description = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return "No Title"
