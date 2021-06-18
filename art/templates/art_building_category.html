@@ -19,11 +19,32 @@
         <option value="4">4</option>
       </select>
       <label for="building">Buildings</label>
-      <select name="building" id="building">
+      <select name="building" id="building" onchange="javascript:handleSelect(this)">
         {% for name in building_names %}
-        <option value="1">{{ name.name }}</option>
+        <option value="{{ 0|get_building_name:name.name }}"><a href="{{ request.path|change_building:name.name }}">{{ name.name }}</option></a>
         {% endfor %}
       </select>
+
+      <!-- Ben: I make this script for you. It allows us to change the building we are in without changing the category.
+      I'm sorry; I didn't mean to take your job. :) -Kyler -->
+      <script type="text/javascript"> 
+        function handleSelect(elm) 
+        { 
+          let x = window.location.href
+          let count = 0
+          for (i= 0; i < x.length; i++) {
+            if (x[i] == '/' && i > 7) {
+              count++
+              if (count == 1) { var firstSlash = i }
+              else if (count == 2) { var secondSlash = i }  
+            }
+          }
+          let building = x.substring(firstSlash + 1, secondSlash)
+          x = x.replace(building, elm.value)
+          window.location = x
+        } 
+      </script> 
+
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
         {% for category in category_names %}
@@ -41,11 +62,11 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
-            {% for category in category_names %}
-            {% if category.name != "All" %}
+            {% for category in artworks.categories.all %}
+            <!-- {% if category.name != "All" %} -->
             <!-- Does not display "All" category, that would not look good in my opinion -->
             <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
-            {% endif %}
+            <!-- {% endif %} -->
             {% endfor %}
           </div>
         </section>
