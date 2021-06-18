@@ -80,9 +80,9 @@ nav {
     text-align: center;
 }
 
-#navigation a {
+#navigation li a {
     display: block;
-    padding: 1.5rem;
+    padding: 1.4em;
     /* text-align: left; */
     text-decoration: none;
     color: white;
@@ -90,8 +90,32 @@ nav {
     /* height: inherit; */
 }
 
-#navigation li:hover {
+#navigation li a:hover {
     background-color: rgba(0, 0, 0, .2);
+}
+
+.material-icons.dropdown {
+    display: inline;
+    font-size: 1em;
+}
+
+#buildings-dropdown {
+    background-color: white;
+    box-shadow: 3px 3px 5px lightgray;
+    margin-top: .05em;
+    text-align: left;
+    height: fit-content;
+    display: none;
+}
+
+#buildings-dropdown.display {
+    display: block;
+}
+
+#navigation li #buildings-dropdown a {
+    padding: .2em;
+    font-size: 1.25em;
+    color: #0076B6;
 }
 
 footer {
