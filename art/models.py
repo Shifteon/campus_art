@@ -24,7 +24,7 @@ class Artist(models.Model):
 # Model for the Artwork includes title, artist name, year created, picture, 
 # building and category/categories
 class Artwork(models.Model):
-    title = models.CharField(max_length=255, blank=True)
+    title = models.CharField(max_length=255)
     artist_name = models.ForeignKey(Artist, null=True, blank=True, on_delete=models.CASCADE)
     year_created = models.IntegerField(null=True, blank=True)
     picture = models.ImageField(upload_to="pictures/")
