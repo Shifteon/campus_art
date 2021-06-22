@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic import DetailView
 from .models import Building_Name, Category, Artwork
 
 
@@ -34,6 +35,10 @@ class BuildingListView(ListView):
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
 
+class ArtDetailView(DetailView):
+    model = Artwork
+    template_name = 'art_detail.html'
+    context_object_name = 'artwork'
 
 
 def map(request):
