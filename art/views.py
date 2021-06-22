@@ -37,8 +37,7 @@ class BuildingListView(ListView):
 
 class ArtDetailView(DetailView):
     model = Artwork
-    template_name = 'art_detail.html'
-    context_object_name = 'artwork'
+    template_name = "artwork_detail.html"
 
 
 def map(request):

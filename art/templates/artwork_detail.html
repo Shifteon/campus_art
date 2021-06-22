@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load python %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+<img  src="../../../media/{{ object.picture }}" alt="{{ object.picture }}" height="500" width="500">
+<p>{{ object.description }}</p>
+<p>{{ object.artist_name }}</p>
+<p>{{ object.year_created }}</p>
+{% endblock %}

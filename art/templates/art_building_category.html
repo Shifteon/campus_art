@@ -71,7 +71,7 @@
     <section class="card-grid art">
       {% for artworks in art_context %}
       <article class="card">
-        <a class="card-a" href="">
+        <a class="card-a" href="{{ artworks.get_absolute_url }}">
           <img src="../../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
         </a>
         <section class="card-body">

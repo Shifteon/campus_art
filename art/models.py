@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Model for the name of which building the artwork is in
@@ -33,6 +34,10 @@ class Artwork(models.Model):
     categories = models.ManyToManyField('Category', related_name='artwork')
     floor = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)], default=1)
     description = models.CharField(max_length=500, blank=True)
+
+    def get_absolute_url(self):
+        """Returns the url to access a detail record for this book."""
+        return reverse('artwork_detail', args=[str(self.id)])
 
     def __str__(self):
         if self.title:
