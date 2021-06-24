@@ -22,14 +22,109 @@
         require(["esri/Map", "esri/views/MapView",
             "esri/Graphic", "esri/layers/GraphicsLayer"
         ], function (Map, MapView, Graphic, GraphicsLayer) {
+
+            const buildings = [
+                {
+                    "title": "I-center",
+                    "path": "i-center",
+                    "longitude": -111.78469344183378,
+                    "latitude": 43.81856593101695
+                },
+                {
+                    "title": "Hyrum Manwaring Student Center",
+                    "path": "mc",
+                    "longitude": -111.78243873154604,
+                    "latitude": 43.81858491529389
+                },
+                {
+                    "title": "John W. Hart Building",
+                    "path": "hart",
+                    "longitude": -111.78542134805093,
+                    "latitude": 43.81976157186624
+                },
+                {
+                    "title": "David O. McKay Library",
+                    "path": "mk",
+                    "longitude": -111.78283569848891,
+                    "latitude": 43.81961449107789
+                },
+                {
+                    "title": "John Taylor Building",
+                    "path": "taylor",
+                    "longitude": -111.78239581618743,
+                    "latitude": 43.81713728622596
+                },
+                {
+                    "title": "Ezra Taft Benson Agricultural and Biological Sciences Building",
+                    "path": "benson",
+                    "longitude":  -111.78323266542505,
+                    "latitude": 43.815527047997385
+                },
+                {
+                    "title": "Science & Technology Center (STC)",
+                    "path": "stc",
+                    "longitude": -111.78475156313836,
+                    "latitude": 43.814718125355505
+                },
+                {
+                    "title": "Thomas E. Ricks Building (RKS)",
+                    "path": "rks",
+                    "longitude":  -111.78098114497733,
+                    "latitude": 43.81491062508285
+                },
+                {
+                    "title": "Spencer W. Kimball Building",
+                    "path": "kimble",
+                    "longitude": -111.78148801722634,
+                    "latitude": 43.81723982272021
+                },
+                {
+                    "title": "Lowell G. Biddulph Building",
+                    "path": "biddulph",
+                    "longitude": -111.78521397290696,
+                    "latitude": 43.817252655508575
+                },
+                {
+                    "title": "Joseph Fielding Smith Building",
+                    "path": "smith",
+                    "longitude": -111.78145244724135,
+                    "latitude": 43.819305866893686
+                },
+                {
+                    "title": "George S. Romney Building",
+                    "path": "romney",
+                    "longitude": -111.7831509139051,
+                    "latitude": 43.820338862164164
+                },
+                {
+                    "title": "John L. Clark Building",
+                    "path": "clark",
+                    "longitude":  -111.78176368458979,
+                    "latitude": 43.82051851169274
+                },
+                {
+                    "title": "Jacob Spori Arts and Letters Building",
+                    "path": "spori",
+                    "longitude":  -111.78238615928612,
+                    "latitude": 43.82098046513198
+                },
+                {
+                    "title": "Barrus Concert Hall - BYU-Idaho",
+                    "path": "barrus_hall",
+                    "longitude":   -111.7835155062388,
+                    "latitude": 43.82144241500091
+                }
+            ]
+
+
             const map = new Map({
                 basemap: "topo-vector" // Basemap layer service
             });
 
             const view = new MapView({
                 map: map,
-                center: [-111.78541227387124, 43.81977355229817], // Longitude, latitude
-                zoom: 17, // Zoom level
+                center: [-111.78380253251153, 43.817685729697516], // Longitude, latitude
+                zoom: 16, // Zoom level
                 container: "viewDiv" // Div element
             });
 
@@ -37,44 +132,47 @@
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
 
-            const point = { //Create a point
-                type: "point",
-                longitude: -111.78469344183378,
-                latitude: 43.81856593101695
-            };
-            const simpleMarkerSymbol = {
-                type: "simple-marker",
-                color: [226, 119, 40], // Orange
-                outline: {
-                    color: [255, 255, 255], // White
-                    width: 1
+            // loop the list
+            for (let index in buildings){
+                const point = { //Create a point
+                    type: "point",
+                    longitude: buildings[index].longitude,
+                    latitude: buildings[index].latitude
+                };
+                const simpleMarkerSymbol = {
+                    type: "simple-marker",
+                    color: [226, 119, 40], // Orange
+                    outline: {
+                        color: [255, 255, 255], // White
+                        width: 1
+                    }
+                };
+
+                // This gets us the domain name
+                let root = "{{ request.build_absolute_uri }}";
+                // Prepare root for adding the path
+                let position = root.search("/map/");
+                root = root.substr(0, position);
+                // Get the path
+                let path = "{% url 'art_building_category' 'i-center' 'all' 0 %}";
+                // Create the url
+                let url = "\"" + root + path + "\"";
+
+                // Set popup content
+                let content = "<a href=" + url + " target='_self'>Buidling</a>";
+
+                // Display the point
+                const pointGraphic = new Graphic({
+                    geometry: point,
+                    symbol: simpleMarkerSymbol
+                });
+                // Create a popup with a link
+                pointGraphic.popupTemplate = {
+                    "title": buildings[index].title,
+                    "content": content
                 }
-            };
-
-            // This gets us the domain name
-            let root = "{{ request.build_absolute_uri }}";
-            // Prepare root for adding the path
-            let position = root.search("/map/");
-            root = root.substr(0, position);
-            // Get the path
-            let path = "{% url 'art_building_category' 'i-center' 'all' 0 %}";
-            // Create the url
-            let url = "\"" + root + path + "\"";
-
-            // Set popup content
-            let content = "I-Center<br><a href=" + url + " target='_self'>Buidling</a>";
-
-            // Display the point
-            const pointGraphic = new Graphic({
-                geometry: point,
-                symbol: simpleMarkerSymbol
-            });
-            // Create a popup with a link
-            pointGraphic.popupTemplate = {
-                "title": "Building",
-                "content": content
+                graphicsLayer.add(pointGraphic);
             }
-            graphicsLayer.add(pointGraphic);
 
         });
     </script>
