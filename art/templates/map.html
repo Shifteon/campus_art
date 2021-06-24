@@ -141,6 +141,9 @@
                 };
                 const simpleMarkerSymbol = {
                     type: "simple-marker",
+                    //type: "picture-marker",
+                    //url: "marker.png",
+
                     color: [226, 119, 40], // Orange
                     outline: {
                         color: [255, 255, 255], // White
@@ -154,12 +157,12 @@
                 let position = root.search("/map/");
                 root = root.substr(0, position);
                 // Get the path
-                let path = "{% url 'art_building_category' 'i-center' 'all' 0 %}";
+                let path = "{% url 'art_building_category' 'buildings[index].path' 'all' 0 %}";
                 // Create the url
                 let url = "\"" + root + path + "\"";
 
                 // Set popup content
-                let content = "<a href=" + url + " target='_self'>Buidling</a>";
+                let content = "<a href=" + url + " target='_self'>Go to this buidling</a>";
 
                 // Display the point
                 const pointGraphic = new Graphic({
