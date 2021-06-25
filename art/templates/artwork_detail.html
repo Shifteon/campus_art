@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
-{% load python %}
 
 {% block content %}
 <main>
     <div class="main">
-        <section class="detail-page-section">
-            <div class="detail-page-left">
-                <img src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
+        <div class="detail-grid"></section>
+            <div class="detail-grid-item">
+                <img src="../../../media/{{ object.picture }}" alt="{{ object.picture }}" height="500" width = "500">
 
             </div>
-            <div class="detail-page-right">
-              <h1>{{ object.title }}</h1>
+            <div class="detail-grid-item">
+              <h3>{{ object.title }}</h3>
+              <p>{{ object.description }}</p>
+              <p>{{ object.artist_name }}</p>
+              <p>{{ object.year_created }}</p>
 
             </div>
-        </section>
+        </div>
 
     </div>
 </main>
