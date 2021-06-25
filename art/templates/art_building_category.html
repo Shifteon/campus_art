@@ -43,7 +43,7 @@
         <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
         data-currentfloor = "{{ request.path|get_current_floor }}"
         data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
-        <option value="{{ building.name }}" selected>{{ building.name }}</option>
+        <option value="{{ building.name }}">{{ building.name }}</option>
         {% endif %}
         {% endfor %}
       </select>

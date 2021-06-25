@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% load static %}
+
 <head>
     <style>
         html,
@@ -141,27 +143,25 @@
                     latitude: buildings[index].latitude
                 };
                 const simpleMarkerSymbol = {
-                    //type: "simple-marker",
-                    type: "picture-marker",
-                    url = "{% static 'marker.png' %}",
+                    type: "simple-marker",
+                    // type: "picture-marker",
+                    // url = "{% static 'marker.png' %}",
                     //url ="/static/marker.png",
                     //url: "campus_art/art/static/marker.png"
 
-                    /*
+                    
                     color: [226, 119, 40], // Orange
                     outline: {
                         color: [255, 255, 255], // White
                         width: 1
-                    }*/
+                    }
                 };
 
                 // This gets us the domain name
                 let root = "{{ request.build_absolute_uri }}";
-                // Prepare root for adding the path
-                let position = root.search("/map/");
-                root = root.substr(0, position);
                 // Get the path
-                let path = "{% url 'art_building_category' 'buildings[index].path' 'all' 0 %}";
+                let buildingPath = buildings[index].path
+                let path = buildingPath + "/all/0"
                 // Create the url
                 let url = "\"" + root + path + "\"";
 
