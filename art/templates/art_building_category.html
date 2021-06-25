@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load python %}
+{% load tags %}
 
 {% block title %}Art Display{% endblock %}
 
@@ -12,25 +12,47 @@
     <section class="side-thing">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <label for="floor">Floor</label>
-      <!-- Add for loop to display floors, use if to change selected on option -->
+      <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
       <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
-        <option value="1">1</option>
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+        {% for i in building_names %}
+        {% if i.name|lower == request.path|get_current_building %}
+          {% for x in i.num_floors|int_to_list:i.name %}
+            {% if x == request.path|get_current_floor %}
+              {% if x == 0 %}
+              <option value="{{ x }}" selected>All Floors</option>
+              {% else %}
+              <option value="{{ x }}" selected>{{ x }}</option>
+              {% endif %}
+            {% else %}
+              {% if x == 0 %}
+              <option value="{{ x }}">All Floors</option>
+              {% else %}
+              <option value="{{ x }}">{{ x }}</option>
+              {% endif %}
+            {% endif %}
+          {% endfor %}          
+        {% endif %}
+        {% endfor %}
       </select>
       <label for="building">Buildings</label>
-      <select name="building" id="building" onchange="javascript:buildingSelect(this)">
-        {% for name in building_names %}
-        <option value="{{ 0|get_building_name:name.name }}"><a href="{{ request.path|change_building:name.name }}">{{ name.name }}</option></a>
+      <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
+        {% for building in building_names %}
+        {% if building.name|lower == request.path|get_current_building %}
+        <option value="{{ building.name }}" selected>{{ building.name }}</option>   <!-- Is there a way to send data from the option tags to the buildingSelect JS code? -->
+        {% else %}
+        <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
+        data-currentfloor = "{{ request.path|get_current_floor }}"
+        data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
+        <option value="{{ building.name }}" selected>{{ building.name }}</option>
+        {% endif %}
         {% endfor %}
       </select>
 
-      <!-- Ben: I make this script for you. It allows us to change the building we are in without changing the category.
-      I'm sorry; I didn't mean to take your job. :) -Kyler -->
       <script type="text/javascript"> 
-        function buildingSelect(elm) 
+        function buildingSelect(select, building_names) 
         { 
+          console.log("Building Names:" + building_names)
+
           let x = window.location.href
           let count = 0
           for (i= 0; i < x.length; i++) {
@@ -41,21 +63,25 @@
             }
           }
           let building = x.substring(firstSlash + 1, secondSlash)
-          x = x.replace(building, elm.value)
+          x = x.replace(building, select.value)
+          // stc = document.getElementById("STC")
+          // console.log(stc.dataset.numfloors)
+          // console.log("Current Floor: " + stc.dataset.currentfloor)
           window.location = x
-        } 
-        function floorSelect(elm) 
+        }
+
+        function floorSelect(select) 
         { 
           let x = window.location.href
           let count = 0
-          for (i= 0; i < x.length; i++) {
+          for (i = 0; i < x.length; i++) {
             if (x[i] == '/' && i > 7) {
               count++
               if (count == 3) { var thirdSlash = i }
             }
           }
           let floor = x.substring(thirdSlash, thirdSlash + 3)
-          x = x.replace(floor, "/" + elm.value)
+          x = x.replace(floor, "/" + select.value)
           window.location = x
           // TODO: This can be modified to allow it to change categories to all.
         } 
@@ -64,7 +90,7 @@
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
         {% for category in category_names %}
-            <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
+            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
         {% endfor %}
       </div>
     </section>
@@ -81,7 +107,7 @@
             {% for category in artworks.categories.all %}
             <!-- {% if category.name != "All" %} -->
             <!-- Does not display "All" category, that would not look good in my opinion -->
-            <a class="category" href="{{ request.path|building_change_category:category.name }}">{{ category.name }}</a>
+            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             <!-- {% endif %} -->
             {% endfor %}
           </div>
@@ -114,5 +140,11 @@
 {% else %}
 <h1>No Artwork matching criteria.</h1>
 {% endif %}
+
+<!-- <center>
+  <h5>
+    This is a place to test Django code. 
+  </h5>
+</center> -->
 
 {% endblock %}
