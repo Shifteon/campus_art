@@ -314,3 +314,13 @@ hr {
 }
 
 /* end card styles */
+
+/* Detail Page CSS */
+.detail-page-section {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+
+
+/* End of Detail Page CSS */

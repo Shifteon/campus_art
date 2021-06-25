@@ -2,9 +2,19 @@
 {% load python %}
 
 {% block content %}
-<h1>{{ object.title }}</h1>
-<img  src="../../../media/{{ object.picture }}" alt="{{ object.picture }}" height="500" width="500">
-<p>{{ object.description }}</p>
-<p>{{ object.artist_name }}</p>
-<p>{{ object.year_created }}</p>
+<main>
+    <div class="main">
+        <section class="detail-page-section">
+            <div class="detail-page-left">
+                <img src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
+
+            </div>
+            <div class="detail-page-right">
+              <h1>{{ object.title }}</h1>
+
+            </div>
+        </section>
+
+    </div>
+</main>
 {% endblock %}
