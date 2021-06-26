@@ -131,12 +131,12 @@ function buildingsDropdown() {
  *   Basically our 'main' function.
  */
 window.addEventListener('load', () => {
+    openNav();
+    buildingsDropdown();
     createid();
     displayCategories();
     displayFilterCategories();
     moveSideThing();
-    openNav();
     openFilter();
     smallFilter();
-    buildingsDropdown();
 })

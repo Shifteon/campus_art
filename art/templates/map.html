@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Map{% endblock %}
-
-{% block content %}
-
 {% load static %}
-
+{% block head %}
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Campus Art{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'small.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="{% static 'main.js' %}"></script>
+
     <style>
         html,
         body,
@@ -184,7 +195,9 @@
         });
     </script>
 </head>
+{% endblock %}
 
+{% block content %}
 <body>
 
     <body>

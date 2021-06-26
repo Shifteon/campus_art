@@ -110,6 +110,9 @@ nav {
 
 #buildings-dropdown.display {
     display: block;
+    z-index: 1000;
+    position: absolute;
+    width: 200px;
 }
 
 #navigation li #buildings-dropdown a {
@@ -326,7 +329,7 @@ hr {
 }
 
 .detail-grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
+    /* background-color: rgba(255, 255, 255, 0.8); */
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     padding: 20px;
     width: 500px;

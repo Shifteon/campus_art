@@ -37,6 +37,8 @@
 
     #navigation.responsive li {
         display: block;
+        z-index: 1000;
+        height: fit-content;
         /* justify-self: start; */
         /* If we want things on the left */
         /* text-align: left; */
@@ -54,7 +56,14 @@
         justify-self: end;
     }
 
-    main {
+    #buildings-dropdown.display {
+        position: static;
+        width: 100%;
+        text-align: center;
+        box-shadow: none;
+    }
+
+    .main {
         display: block;
     }
 
