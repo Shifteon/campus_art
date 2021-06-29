@@ -9,46 +9,51 @@
 {% load static %}
 
 <main>
-  <h1 class="building-name">I-Center</h1>
+  <header>
+    <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
+    <h1 class="building-name">I-Center</h1>
+  </header>
   <div class="main">
     <section class="side-thing">
       <h2>Filter <span id="filter-extend">+</span></h2>
-      <label for="floor">Floor</label>
-      <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
-      <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
-        {% for i in building_names %}
-        {% if i.name|lower == request.path|get_current_building %}
-          {% for x in i.num_floors|int_to_list:i.name %}
-            {% if x == request.path|get_current_floor %}
-              {% if x == 0 %}
-              <option value="{{ x }}" selected>All Floors</option>
+      <div class="filter-dropdown">
+        <label for="floor">Floor</label>
+        <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
+        <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
+          {% for i in building_names %}
+          {% if i.name|lower == request.path|get_current_building %}
+            {% for x in i.num_floors|int_to_list:i.name %}
+              {% if x == request.path|get_current_floor %}
+                {% if x == 0 %}
+                <option value="{{ x }}" selected>All Floors</option>
+                {% else %}
+                <option value="{{ x }}" selected>{{ x }}</option>
+                {% endif %}
               {% else %}
-              <option value="{{ x }}" selected>{{ x }}</option>
+                {% if x == 0 %}
+                <option value="{{ x }}">All Floors</option>
+                {% else %}
+                <option value="{{ x }}">{{ x }}</option>
+                {% endif %}
               {% endif %}
-            {% else %}
-              {% if x == 0 %}
-              <option value="{{ x }}">All Floors</option>
-              {% else %}
-              <option value="{{ x }}">{{ x }}</option>
-              {% endif %}
-            {% endif %}
-          {% endfor %}          
-        {% endif %}
-        {% endfor %}
-      </select>
-      <label for="building">Buildings</label>
-      <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
-        {% for building in building_names %}
-        {% if building.name|lower == request.path|get_current_building %}
-        <option value="{{ building.name }}" selected>{{ building.name }}</option>   <!-- Is there a way to send data from the option tags to the buildingSelect JS code? -->
-        {% else %}
-        <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
-        data-currentfloor = "{{ request.path|get_current_floor }}"
-        data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
-        <option value="{{ building.name }}">{{ building.name }}</option>
-        {% endif %}
-        {% endfor %}
-      </select>
+            {% endfor %}          
+          {% endif %}
+          {% endfor %}
+        </select>
+        <label for="building">Buildings</label>
+        <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
+          {% for building in building_names %}
+          {% if building.name|lower == request.path|get_current_building %}
+          <option value="{{ building.name }}" selected>{{ building.name }}</option>   <!-- Is there a way to send data from the option tags to the buildingSelect JS code? -->
+          {% else %}
+          <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
+          data-currentfloor = "{{ request.path|get_current_floor }}"
+          data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
+          <option value="{{ building.name }}">{{ building.name }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+        </div>
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
         {% for category in category_names %}

@@ -50,12 +50,14 @@ function displayFilterCategories() {
 function moveSideThing() {
     let sideThing = document.querySelector('.side-thing');
     let nav = document.querySelector('nav');
+    let top = 0;
+
     window.addEventListener('scroll', () => {
         let scroll = window.scrollY;
-        if (scroll > 64) {
-            sideThing.classList.add('past-nav');
+        if (scroll > 375) {
+            sideThing.style.top = `${scroll - 375 + 10}px`;
         } else {
-            sideThing.classList.remove('past-nav');
+            sideThing.style.top = "0";
         }
     });
 }

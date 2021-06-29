@@ -130,6 +130,13 @@ footer {
     padding-bottom: 1rem;
 }
 
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    /* position: absolute; */
+}
+
 main {
     height: 100%;
     margin-bottom: 100px;
@@ -138,10 +145,26 @@ main {
 .main {
     display: grid;
     grid-template-columns: 20% 80%;
+    position: relative;
+}
+
+#i-center-img {
+    margin: 0 auto;
+    z-index: -1;
+    width: fit-content;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    width: 100%;
 }
 
 .building-name {
+    font-size: 3em;
     margin-left: 3em;
+    color: white;
+    grid-row: 1;
+    grid-column: 1/2;
+    z-index: 10;
+    /* margin-top: 2em; */
 }
 
 .art {
@@ -158,22 +181,18 @@ main {
     justify-self: center;
     margin: 3em;
     margin-left: 1em;
-    position: fixed;
+    position: absolute;
     left: 0;
-    top: 15%;
+    top: 0;
     border-radius: .3em;
     text-align: center;
     overflow: hidden;
-    transition: 300ms;
+    /* transition: 300ms; */
+    z-index: 20;
 }
 
 #filter-extend {
     display: none;
-}
-
-.side-thing.past-nav {
-    top: 15%;
-    margin-top: 0;
 }
 
 .side-thing h2 {
@@ -184,8 +203,26 @@ main {
     padding-top: .75em;
 }
 
+.side-thing label {
+    width: fit-content;
+}
+
 .side-thing select {
-    width: 80%;
+    /* width: 70%; */
+    border-radius: 4px;
+    padding: .2em;
+    border: 1px solid #ccc;
+}
+
+.filter-dropdown {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: .5em;
+    align-items: center;
+}
+
+.filter-dropdown label:first-of-type, .filter-dropdown select:first-of-type {
+    margin-bottom: .3em;
 }
 
 .drop-btn {
@@ -216,7 +253,7 @@ main {
 /* card styles */
 .card-grid {
     display: grid;
-    align-items: center;
+    align-items: start;
     justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     padding-bottom: 3%;
