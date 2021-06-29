@@ -4,8 +4,7 @@
 function displayCategories() {
     let btns = document.querySelectorAll('.category-btn');
     let categories = document.querySelectorAll('.categories');
-    // console.log(btns.length);
-    // console.log(categories.length);
+    
     for (let btn of btns) {
         btn.addEventListener('click', () => {
             let num = btn.id;
@@ -50,12 +49,13 @@ function displayFilterCategories() {
 function moveSideThing() {
     let sideThing = document.querySelector('.side-thing');
     let nav = document.querySelector('nav');
-    let top = 0;
+    let height = document.querySelector('header').clientHeight + nav.clientHeight + 48;
+    console.log(height);
 
     window.addEventListener('scroll', () => {
         let scroll = window.scrollY;
-        if (scroll > 375) {
-            sideThing.style.top = `${scroll - 375 + 10}px`;
+        if (scroll > height) {
+            sideThing.style.top = `${scroll - height + 10}px`;
         } else {
             sideThing.style.top = "0";
         }
