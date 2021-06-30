@@ -405,4 +405,12 @@ hr {
     width: 80%;
     font-size: 15px;
   }
+
+.about {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+}
 /* End of about page CSS */
