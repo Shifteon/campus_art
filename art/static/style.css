@@ -8,8 +8,8 @@ html {
 
 body {
     margin: 0;
-    /* font-family: 'Noto Sans JP', sans-serif; */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     width: 100%;
     overflow-x: hidden;
 }
@@ -134,18 +134,6 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
-    /* position: absolute; */
-}
-
-main {
-    height: 100%;
-    margin-bottom: 100px;
-}
-
-.main {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    position: relative;
 }
 
 #i-center-img {
@@ -165,6 +153,17 @@ main {
     grid-column: 1/2;
     z-index: 10;
     /* margin-top: 2em; */
+}
+
+main {
+    height: 100%;
+    margin-bottom: 100px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: relative;
 }
 
 .art {
