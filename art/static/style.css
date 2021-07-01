@@ -377,7 +377,39 @@ hr {
       font-size: 1.5em;
   }
 
-
-
-
 /* End of Detail Page CSS */
+
+
+/* About page CSS */
+.about-left-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    padding: 50px 50px 30px 100px;
+    justify-content: left; 
+    align-items: center;
+}
+
+.about-right-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 90%;
+    padding: 30px 30px 30px 100px;
+    justify-content: right; 
+    align-items: center;
+}
+
+.about-grid-item {
+    padding: 50px;
+    width: 80%;
+    font-size: 15px;
+}
+
+.about-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+}
+/* End of about page CSS */
