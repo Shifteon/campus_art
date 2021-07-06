@@ -9,6 +9,7 @@
 {% load static %}
 
 <main>
+  <script src="{% static 'building.js' %}"></script>
   <header>
     <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
     <h1 class="building-name">{{ request.path|get_current_building }}</h1>
