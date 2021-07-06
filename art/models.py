@@ -15,6 +15,8 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = ['name']
 
 # Model for the artist. This model is to reduce redundancy.
 class Artist(models.Model):

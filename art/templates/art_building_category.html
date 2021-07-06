@@ -69,7 +69,7 @@
           {% endwith %}
         {% endfor %}
 
-        <!-- Scrolls through alphabetized list and displays a link. -->
+        <!-- Scrolls through list and displays a link. -->
         {% for current_category in 0|return_list %}
         <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
         {% endfor %}
