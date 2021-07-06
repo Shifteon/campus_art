@@ -12,7 +12,11 @@
   <script src="{% static 'building.js' %}"></script>
   <header>
     <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
-    <h1 class="building-name">{{ request.path|get_current_building }}</h1>
+    {% for i in building_names %}
+    {% if i.name|lower == request.path|get_current_building %} <!-- Returns the building name with proper capitalization -->
+    <h1 class="building-name">{{ i }}</h1>
+    {% endif %}
+    {% endfor %}
   </header>
   <div class="main">
     <section class="side-thing">
