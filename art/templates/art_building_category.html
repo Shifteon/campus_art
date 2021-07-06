@@ -11,7 +11,7 @@
 <main>
   <header>
     <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
-    <h1 class="building-name">I-Center</h1>
+    <h1 class="building-name">{{ request.path|get_current_building }}</h1>
   </header>
   <div class="main">
     <section class="side-thing">
