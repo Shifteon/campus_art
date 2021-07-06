@@ -4,11 +4,12 @@
 {% block title %}Art Display{% endblock %}
 
 {% block content %}
-{% if artwork %}
+{% if request.path|get_current_building in building_names|lower %}
 
 {% load static %}
 
 <main>
+  <script src="{% static 'building.js' %}"></script>
   <header>
     <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
     <h1 class="building-name">{{ request.path|get_current_building }}</h1>
@@ -148,7 +149,8 @@
   <script src="{% static 'filter.js' %}"></script>
 </main>
 {% else %}
-<h1>No Artwork matching criteria.</h1>
+<h1>Error 404 Not Found</h1>
+<h2>Building is not yet in the database: {{ request.path|get_current_building }} </h2>
 {% endif %}
 
 <!-- <center>

@@ -207,7 +207,6 @@ main {
 }
 
 .side-thing select {
-    /* width: 70%; */
     border-radius: 4px;
     padding: .2em;
     border: 1px solid #ccc;
