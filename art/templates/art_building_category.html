@@ -80,7 +80,7 @@
       {% for artworks in art_context %}
       <article class="card">
         <a class="card-a" href="{{ artworks.get_absolute_url }}">
-          <img src="../../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}">
+          <img src="../../../media/{{ artworks.picture }}" alt="{{ artworks.picture }}" loading="lazy">
         </a>
         <section class="card-body">
           <h2>{{ artworks.title }}</h2>

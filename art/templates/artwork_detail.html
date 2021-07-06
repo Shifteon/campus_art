@@ -12,15 +12,21 @@
             </div>
             <div class="detail-grid-item">
                 <h1>{{ object.title }}</h1>
+                {% if object.description != None %}
                 <p>{{ object.description }}</p>
-                <p>{{ object.artist_name }}</p>
+                {% endif %}
+                {% if object.artist_name != None %}
+                <p style="font-style: italic;">{{ object.artist_name }}</p>
+                {% endif %}
+                {% if object.year_created != None %}
                 <p>{{ object.year_created }}</p>
+                {% endif %}
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex corporis harum, quidem cumque qui at
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex corporis harum, quidem cumque qui at
                     illo, quaerat quod quisquam veritatis reiciendis explicabo inventore optio quos quae exercitationem.
                     Inventore, temporibus assumenda voluptas tempora dicta reiciendis laborum quam aperiam quis!
                     Eligendi ab ratione vitae odit molestias distinctio architecto laborum quaerat voluptatem
-                    laboriosam.</p>
+                    laboriosam.</p> -->
             </div>
         </div>
 
