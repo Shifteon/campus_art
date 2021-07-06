@@ -4,8 +4,7 @@
 function displayCategories() {
     let btns = document.querySelectorAll('.category-btn');
     let categories = document.querySelectorAll('.categories');
-    // console.log(btns.length);
-    // console.log(categories.length);
+    
     for (let btn of btns) {
         btn.addEventListener('click', () => {
             let num = btn.id;
@@ -50,12 +49,15 @@ function displayFilterCategories() {
 function moveSideThing() {
     let sideThing = document.querySelector('.side-thing');
     let nav = document.querySelector('nav');
+    let height = document.querySelector('header').clientHeight + nav.clientHeight + 48;
+    console.log(height);
+
     window.addEventListener('scroll', () => {
         let scroll = window.scrollY;
-        if (scroll > 64) {
-            sideThing.classList.add('past-nav');
+        if (scroll > height) {
+            sideThing.style.top = `${scroll - height + 10}px`;
         } else {
-            sideThing.classList.remove('past-nav');
+            sideThing.style.top = "0";
         }
     });
 }

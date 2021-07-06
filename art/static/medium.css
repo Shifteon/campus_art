@@ -1,0 +1,87 @@
+@media only screen and (max-width: 1023px) {
+    .nav {
+        width: 97%;
+        grid-template-columns: 30% 70%;
+    }
+    
+    .main {
+        display: block;
+    }
+    
+    .side-thing {
+        display: none;
+    }
+
+    .small-filter {
+        position: fixed;
+        bottom: 12%;
+        right: 3%;
+        display: none;
+        grid-template-columns: 1fr;
+        text-align: center;
+        width: 300px;
+        box-shadow: 3px 3px 3px lightgray;
+        background-color: #fffdff;
+        z-index: 100;
+        padding-bottom: 1em;
+    }
+
+    .small-filter.display {
+        display: grid;
+    }
+
+    .small-filter select {
+        width: 80%;
+        margin: 0 auto;
+        border-radius: 4px;
+        padding: .2em;
+        border: 1px solid #ccc;
+    }
+
+    .small-filter select:first-of-type {
+        margin-bottom: 1em;
+    }
+
+    .small-filter button, .small-filter div {
+        padding: 1em;
+        padding-bottom: 0;
+    }
+
+    .small-filter h3 {
+        margin-top: 0;
+        padding: 1em;
+        padding-bottom: .3em;
+        color: white;
+        background-color: #68AD44;
+    }
+
+    .small-filter-category {
+        display: none;
+    }
+
+    .small-filter-category.display {
+        display: block;
+    }
+
+    #filter-btn {
+        display: block;
+        position: fixed;
+        bottom: 3%;
+        right: 3%;
+        padding: 0;
+        border-radius: 100%;
+        font-size: 2em;
+        height: 1.5em;
+        width: 1.5em;
+        color: white;
+        background-color: #0076B6;
+        border: none;
+        text-align: center;
+        box-shadow: 3px 3px 3px lightgray;
+        z-index: 100;
+    }
+
+    #filter-btn.clicked {
+        background-color: #68AD44;
+    }
+}
