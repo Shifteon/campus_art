@@ -50,3 +50,6 @@ class ArtDetailView(DetailView):
 def map(request):
     return render(request, "map.html")
 
+def about(request):
+    return render(request, "about.html")
+
