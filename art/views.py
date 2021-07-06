@@ -45,11 +45,24 @@ class BuildingListView(ListView):
 class ArtDetailView(DetailView):
     model = Artwork
     template_name = "artwork_detail.html"
+    def get_context_data(self, **kwargs):   
+        context = super(ArtDetailView, self).get_context_data(**kwargs)
+        context['building_names'] = Building_Name.objects.all().order_by('name')
+        return context
+
 
 
 def map(request):
-    return render(request, "map.html")
+    building_names = Building_Name.objects.all()
+    context = {
+        'building_names':building_names
+    }
+    return render(request, "map.html", context)
 
 def about(request):
-    return render(request, "about.html")
+    building_names = Building_Name.objects.all()
+    context = {
+        'building_names':building_names
+    }
+    return render(request, "about.html", context)
 
