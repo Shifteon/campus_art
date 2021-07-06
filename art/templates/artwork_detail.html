@@ -16,10 +16,10 @@
                 <p>{{ object.description }}</p>
                 {% endif %}
                 {% if object.artist_name != None %}
-                <p style="font-style: italic;">{{ object.artist_name }}</p>
+                <span id="artist-name">{{ object.artist_name }} </span>
                 {% endif %}
                 {% if object.year_created != None %}
-                <p>{{ object.year_created }}</p>
+                <span>{{ object.year_created }}</span>
                 {% endif %}
 
                 <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex corporis harum, quidem cumque qui at
