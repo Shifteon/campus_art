@@ -34,7 +34,7 @@
           <li id="buildings-link">
             <a href="#">Buildings<span class="material-icons dropdown">arrow_drop_down</span></a>
             <div id="buildings-dropdown">
-              {% for building in building_names %}
+              {% for building in buildings %}
               <a href="{% url 'art_building_category' building.name|lower 'all' 0 %}">{{ building.name }}</a>
               {% endfor %}
             </div>

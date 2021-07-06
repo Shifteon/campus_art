@@ -48,8 +48,16 @@ class ArtDetailView(DetailView):
 
 
 def map(request):
-    return render(request, "map.html")
+    buildings = Building_Name.objects.all()
+    context = {
+        'buildings':buildings
+    }
+    return render(request, "map.html", context)
 
 def about(request):
-    return render(request, "about.html")
+    buildings = Building_Name.objects.all()
+    context = {
+        'buildings':buildings
+    }
+    return render(request, "about.html", context)
 
