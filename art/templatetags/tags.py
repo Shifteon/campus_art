@@ -1,6 +1,41 @@
 from django import template
+from art.models import Category
 
 register = template.Library()
+current_list = []
+
+@register.filter
+def add_to_list(value):
+    # Add code here to check for category objects, then extract name from them. Then add to list. -Kyler
+    if value == 0:
+        current_list.clear()
+    else:
+        value_in_list = False
+        for x in current_list:
+            if x == value:
+                value_in_list = True
+        if not value_in_list:
+            current_list.append(value)
+    return("")
+
+@register.filter
+def return_list(value):
+    # new_list = current_list.sort()
+    return(current_list)
+
+# TODO: Remove this tag once we publish this, it is unnecessary.
+@register.filter
+def return_type(value):
+    return type(value)
+
+@register.filter
+# Returns name of a category given a dictionary that Django uses.
+def get_cat_name(dict):
+    value = dict.get('categories')
+    category_name = getattr(Category.objects.get(pk=int(value)), 'name')
+    return category_name
+    # return type is String
+
 
 @register.filter
 def change_category(value, arg):
