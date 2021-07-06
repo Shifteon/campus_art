@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic import DetailView
 from .models import Building_Name, Category, Artwork
@@ -18,17 +19,20 @@ class ArtBuildingCategoryView(ListView):
     def get_context_data(self, **kwargs):   # Do you think it would be possible to give a 404 message if the user navigates to a building that doesn't exist?
         context = super(ArtBuildingCategoryView, self).get_context_data(**kwargs)
         building_art = Artwork.objects.filter(building__name__contains=self.kwargs['building'])
-        if self.kwargs['floor'] == '0':   # Load all art if the floor in url is zero.
+
+        if self.kwargs['floor'] == '0':   # Load all art in the building if the floor in url is zero.
             context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'])
+            context['categories_for_filter'] = building_art.values('categories')
         else:
             context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'], floor=self.kwargs['floor'])
-        # Try to add an if statement make art_context a different thing in floor == 0.
+            context['categories_for_filter'] = building_art.filter(floor=self.kwargs['floor']).values('categories').order_by('categories')
 
         context['category_names'] = Category.objects.all().order_by('name')
         context['building_names'] = Building_Name.objects.all().order_by('name')
         return context
 
 # Add another view, use an if statement, change database
+# What does this comment mean and who wrote it? Curiously, Kyler
 
 class BuildingListView(ListView):
     model = Building_Name

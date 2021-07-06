@@ -14,7 +14,7 @@
     <section class="side-thing">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <label for="floor">Floor</label>
-      <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
+      <!-- Using a for loop to display floors, using an if statement to change 'selected' on option -->
       <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
         {% for i in building_names %}
         {% if i.name|lower == request.path|get_current_building %}
@@ -51,9 +51,19 @@
       </select>
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
-        {% for category in category_names %}
-            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
+        
+        {{ 0|add_to_list }}   <!-- Clears the list of categories on the building and floor. -->
+        {% for current_category in categories_for_filter %}
+          {% with current_category|get_cat_name as current_category %}
+            {{ current_category|add_to_list }}  <!-- Adds current category in the for loop to a list. -->
+          {% endwith %}
         {% endfor %}
+
+        <!-- Scrolls through alphabetized list and displays a link. -->
+        {% for current_category in 0|return_list %}
+        <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
+        {% endfor %}
+
       </div>
     </section>
     <section class="card-grid art">
@@ -66,11 +76,13 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
+            {{ 0|add_to_list }} <!-- Adding the int 0 to add_to_list clears the list. -->
             {% for category in artworks.categories.all %}
-            <!-- {% if category.name != "All" %} -->
-            <!-- Does not display "All" category, that would not look good in my opinion -->
-            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
-            <!-- {% endif %} -->
+            <!-- <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a> -->
+              {{ category|add_to_list }}
+            {% endfor %}
+            {% for category in artwork|return_list %}
+              <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             {% endfor %}
           </div>
         </section>
@@ -81,6 +93,7 @@
       {% endfor %}
     </section>
   </div>
+
   <section class="small-filter">
     <h3>Filter</h3>
     <label for="floor">Floor</label>
