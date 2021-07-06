@@ -57,14 +57,14 @@ class ArtDetailView(DetailView):
 
 
 def map(request):
-    building_names = Building_Name.objects.all()
+    building_names = Building_Name.objects.all().order_by('name')
     context = {
         'building_names':building_names
     }
     return render(request, "map.html", context)
 
 def about(request):
-    building_names = Building_Name.objects.all()
+    building_names = Building_Name.objects.all().order_by('name')
     context = {
         'building_names':building_names
     }
