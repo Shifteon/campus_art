@@ -15,7 +15,7 @@ To run this project on your own machine follow these instructions:
 ```
 System check identified no issues (0 silenced).
 May 20, 2021 - 19:23:40
-Django version 3.2.2, using settings 'module2.settings'
+Django version 3.2.2, using settings 'campus_art.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
