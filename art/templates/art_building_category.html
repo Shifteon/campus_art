@@ -19,7 +19,7 @@
     {% endfor %}
   </header>
   <div class="main">
-    <section class="side-thing">
+    <section class="side-filter">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <div class="filter-dropdown">
         <label for="floor">Floor</label>
@@ -153,8 +153,10 @@
   <script src="{% static 'filter.js' %}"></script>
 </main>
 {% else %}
-<h1>Error 404 Not Found</h1>
-<h2>Building is not yet in the database: {{ request.path|get_current_building }} </h2>
+<main>
+  <h1>Error 404 Not Found</h1>
+  <h2>Building is not yet in the database: {{ request.path|get_current_building }} </h2>
+</main>
 {% endif %}
 
 <!-- <center>

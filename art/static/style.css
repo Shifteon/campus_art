@@ -180,10 +180,10 @@ main {
     grid-column: 2/3;
 }
 
-.side-thing {
+.side-filter {
     width: 20%;
-    height: 300px;
-    /* border: 2px solid black; */
+    min-height: 300px;
+    height: fit-content;
     background-color: #EAEAEA;
     justify-self: center;
     margin: 3em;
@@ -194,7 +194,6 @@ main {
     border-radius: .3em;
     text-align: center;
     overflow: hidden;
-    /* transition: 300ms; */
     z-index: 20;
 }
 
@@ -202,7 +201,7 @@ main {
     display: none;
 }
 
-.side-thing h2 {
+.side-filter h2 {
     background-color: #68AD44;
     color: white;
     margin-top: 0;
@@ -210,11 +209,11 @@ main {
     padding-top: .75em;
 }
 
-.side-thing label {
+.side-filter label {
     width: fit-content;
 }
 
-.side-thing select {
+.side-filter select {
     border-radius: 4px;
     padding: .2em;
     border: 1px solid #ccc;
