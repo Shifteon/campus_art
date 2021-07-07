@@ -154,18 +154,8 @@
                     latitude: buildings[index].latitude
                 };
                 const simpleMarkerSymbol = {
-                    type: "simple-marker",
-                    // type: "picture-marker",
-                    // url = "{% static 'marker.png' %}",
-                    //url ="/static/marker.png",
-                    //url: "campus_art/art/static/marker.png"
-
-                    
-                    color: [226, 119, 40], // Orange
-                    outline: {
-                        color: [255, 255, 255], // White
-                        width: 1
-                    }
+                    type: "picture-marker",
+                    url: "{% static 'marker.png' %}",
                 };
 
                 // This gets us the domain name
