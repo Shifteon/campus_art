@@ -72,6 +72,13 @@
         display: none;
     }
 
+/* Detail Page */
+    #detail-image{
+        max-width: 100%;
+    }
+/* End Detail Page */
+
+/* About Page */
     .teamMemberCard{
         display: block;
     }
@@ -81,4 +88,5 @@
         display: block;
         margin: auto;
     }
+/* End About Page */
 }

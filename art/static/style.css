@@ -353,30 +353,71 @@ hr {
 /* end card styles */
 
 /* Detail Page CSS */
-.detail-grid {
+#detail-grid {
     display: grid;
-    grid-template-columns: auto auto;
-    width: 100%;
-    padding: 10px;
-    justify-content: center;
-    /* align-items: center; */
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    grid-gap: 1rem;
 }
 
-.detail-grid-item {
-    /* background-color: rgba(255, 255, 255, 0.8); */
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
-    padding: 20px;
-    width: 500px;
-    font-size: 15px;
-    /* text-align: center; */
-  }
+#detail-image {
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    box-shadow: 5px 5px 8px grey;
+    transition: .5s ease;
+}
 
-  .detail-grid-item p {
-      font-size: 1.5em;
-  }
+#detail-image:hover {
+    box-shadow: 10px 10px 8px grey;
+    transition: .5s ease;
+}
 
+#detail-info {
+    max-width: 500px;
+    padding: 3rem;
+    background-color: #EAEAEA;
+    border-radius: 15px;
+    box-shadow: 5px 5px 8px #adadad;
+    margin-bottom: auto;
+}
+
+#title{
+    font-size: 3rem;
+    margin: 0;
+}
+
+#artist-name {
+    display: inline;
+}
+
+#description {
+    margin-top: 3rem;
+}
+
+#expand{
+    text-align: center;
+}
+
+#viewport_size{
+    height: 88.25vh;
+    display: none;
+    text-align: center;
+}
+
+#large-image {
+    max-width: 90%;
+    max-height: 95%;
+    margin: 1rem 1rem 0 1rem;
+    box-shadow: 5px 5px 8px #adadad;
+}
+
+#shrink {
+    margin: 0;
+}
 /* End of Detail Page CSS */
-
 
 /* About page CSS */
 #aboutPageContent {
@@ -423,5 +464,4 @@ hr {
     text-align: center;
     margin-bottom: 2rem;
 }
-
 /* End of about page CSS */

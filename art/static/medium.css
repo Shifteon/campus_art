@@ -95,6 +95,18 @@
         background-color: #68AD44;
     }
 
+/* Detail Page */
+#detail-grid {
+    grid-template-columns: 1fr;
+}
+#detail-info{
+    margin: auto;
+    grid-row: 1;
+    max-width: 404px;
+}
+/* End Detail Page */
+
+/* About Page */
     #aboutPageHero {
         width: 90%;
     }
@@ -111,6 +123,6 @@
     .teamMemberCard:nth-child(even) img{
         grid-column: 2;
     }
-
+/* End About Page */
 
 }
