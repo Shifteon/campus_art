@@ -66,7 +66,7 @@
           {% endwith %}
         {% endfor %}
 
-        <!-- Scrolls through list and displays a link. -->
+        <!-- Loops through list and displays a link for each category. -->
         {% for current_category in 0|return_list %}
         <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
         {% endfor %}
@@ -83,12 +83,8 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
-            {{ 0|add_to_list }} <!-- Adding the int 0 to add_to_list clears the list. -->
             {% for category in artworks.categories.all %}
-              {{ category|add_to_list }}
-            {% endfor %}
-            {% for category in 1|return_list %} <!-- Returns the categories in the list. -->
-              <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
+            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             {% endfor %}
           </div>
         </section>
@@ -135,9 +131,9 @@
       {% endfor %}
     </select>
     <button class="small-filter-category-btn drop-btn">Categories +</button>
-    <div class="small-filter-category">
-      {% for category in 1|return_list %}   <!-- Returns the categories in the list. -->
-        <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
+    <div class="small-filter-category">    
+      {% for current_category in 0|return_list %}
+        <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
       {% endfor %}
     </div>
   </section>
@@ -154,7 +150,7 @@
 
 <!-- <center>
   <h5>
-    This is a place to test Django code. 
+   This is here to test Django code.
   </h5>
 </center> -->
 
