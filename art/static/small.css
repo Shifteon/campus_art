@@ -72,6 +72,29 @@
         display: none;
     }
 
+    /* Detail Page CSS */
+    .detail-grid {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin-top: 1em;
+    }
+
+    .detail-grid-item {
+        padding: 0;
+        width: 100%;
+    }
+
+    .detail-grid-item p, .detail-grid-item h1, .detail-grid-item span {
+        padding-left: .3em;
+    }
+
+    .detail-grid-item img {
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+
     .teamMemberCard{
         display: block;
     }
