@@ -66,7 +66,7 @@
           {% endwith %}
         {% endfor %}
 
-        <!-- Scrolls through list and displays a link. -->
+        <!-- Loops through list and displays a link for each category. -->
         {% for current_category in 0|return_list %}
         <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
         {% endfor %}
@@ -136,8 +136,15 @@
     </select>
     <button class="small-filter-category-btn drop-btn">Categories +</button>
     <div class="small-filter-category">
-      {% for category in 1|return_list %}   <!-- Returns the categories in the list. -->
-        <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
+      {{ 0|add_to_list }}   <!-- Clears the list of categories on the building and floor. -->
+      {% for current_category in categories_for_filter %}
+        {% with current_category|get_cat_name as current_category %}
+          {{ current_category|add_to_list }}  <!-- Adds current category in the for loop to a list. -->
+        {% endwith %}
+      {% endfor %}
+      
+      {% for current_category in 0|return_list %}
+        <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
       {% endfor %}
     </div>
   </section>
@@ -154,7 +161,7 @@
 
 <!-- <center>
   <h5>
-    This is a place to test Django code. 
+   This is here to test Django code.
   </h5>
 </center> -->
 
