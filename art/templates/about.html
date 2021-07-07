@@ -3,62 +3,84 @@
 {% load static %}
 
 {% block content %}
-<br>
-<img src="{% static 'zoom.jpg' %}" alt="sample" class="about-center" style="width:600px;height:360px;">
-<h3 class="about-center">What's the point of art if you can't see it, 
-    and how are you going to see it if you can't find it? 
-    The BYU-I campus is home to many great pieces of art, 
-    but it is often difficult to find that art, and once you find it and your curiosity peaks, 
-    it's impossible to find any information about it! This is where we come in. 
-    Our team has created an easy-to-use web app that allows you to find and learn about all the art on the 
-    BYU-I campus. Using the interactive map you can find buildings that contain artwork. 
-    Once you've selected a building, the artwork and information are just one click away. 
-    With this web app, we hope to give everyone a chance to learn about the great art you can find on the BYU-I campus.</h3>
-<div class="about-left-grid">
-    <div class="about-grid-item">
-        <img src="{% static 'm2021-139.jpg' %}" alt="kyler" style="width:200px;height:300px;">
-    </div>
-    <div class="about-grid-item">
-        <h1>Kyler Mellor</h1>
-        <h2>Kyler is a unicycle-riding nerd that enjoys programming in his free time. He is a student at Brigham Young University-Idaho 
-            studying Software Engineering. He enjoys learning new things, especially when it involves more efficient ways to program.
-            Kyler is currently learning how to create 3D video games. 
+<section id="aboutPageContent">
+    <div id="aboutPageHero">
+        <hr>
+        <h1>What is Campus Art?</h1>
+        <img src="{% static 'laptopsOnDesk.jpg' %}" alt="sample">
+        <h2>
+            What's the point of art if you can't see it, 
+            and how are you going to see it if you can't find it? 
+            The BYU-I campus is home to many great pieces of art, 
+            but it is often difficult to find that art, and once you find it and your curiosity peaks, 
+            it's impossible to find any information about it! This is where we come in. 
+            Our team has created an easy-to-use web app that allows you to find and learn about all the art on the 
+            BYU-I campus. Using the interactive map you can find buildings that contain artwork. 
+            Once you've selected a building, the artwork and information are just one click away. 
+            With this web app, we hope to give everyone a chance to learn about the great art you can find on the BYU-I campus.
         </h2>
-        <h3>Kyler helped to write the Django code in the HTML templates and also created the template tags.</h3>
-    </div>    
-</div>
-<div class="about-right-grid">
-    <div class="about-grid-item">
-        <h1>Benjamin Wyatt</h1>
-        <h2>Major Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor </h2>
-        <h3>what I have done for this project</h3>
-        
+        <hr>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>About Us</h1>
+        <hr>
     </div>
-    <div class="about-grid-item">
-        <img src="{% static 'm2021-139.jpg' %}" alt="kyler" style="width:200px;height:300px;">
-    </div>  
-</div>
-<div class="about-left-grid">
-    <div class="about-grid-item">
-        <img src="{% static 'm2021-139.jpg' %}" alt="kyler" style="width:200px;height:300px;">
-    </div>
-    <div class="about-grid-item">
-        <h1>Joshua Dean</h1>
-        <h2>Major Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor </h2>
-        <h3>what I have done for this project</h3>
-    </div>    
-</div>
-<div class="about-right-grid">
-    <div class="about-grid-item">
-        <h1>Kevin Kirby</h1>
-        <h2>Major Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor Kyler Mellor </h2>
-        <h3>what I have done for this project</h3>
-        
-    </div>
-    <div class="about-grid-item">
-        <img src="{% static 'm2021-139.jpg' %}" alt="kyler" style="width:200px;height:300px;">
-    </div>  
-</div>
-<br>
+
+    <section id="cardGrid">
+        <div class="teamMemberCard">
+            <img class="teamMemberPhoto" src="{% static 'picture_placeholder.png' %}" alt="Ben">
+
+            <div class="teamMemberInfo">
+                <h1>Ben Wyatt</h1>
+                <h3>Major: Software Engineering </h3>
+                <h4>Background: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloremque voluptates, nostrum iure veritatis autem iste reprehenderit earum. Atque molestiae neque vitae architecto? Qui sed nihil dolorum et laborum aperiam?</h4>
+            </div>    
+        </div>
+
+        <div class="teamMemberCard">
+            <img class="teamMemberPhoto" src="{% static 'kyler_mellor.jpg' %}" alt="Kyler">
+
+            <div class="teamMemberInfo">
+                <h1>Kyler Mellor</h1>
+                <h3>Major: Software Engineering </h3>
+                <h4>Background: Kyler is a unicycle-riding nerd that enjoys programming in his free time. He is a student at Brigham Young University-Idaho 
+                    studying Software Engineering. He enjoys learning new things, especially when it involves more efficient ways to program.
+                    Kyler is currently learning how to create 3D video games.</h4>
+            </div>    
+        </div>
+
+        <div class="teamMemberCard">
+            <img class="teamMemberPhoto" src="{% static 'picture_placeholder.png' %}" alt="Sami">
+
+            <div class="teamMemberInfo">
+                <h1>Sami Wang</h1>
+                <h3>Major: Software Engineering </h3>
+                <h4>Background: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloremque voluptates, nostrum iure veritatis autem iste reprehenderit earum. Atque molestiae neque vitae architecto? Qui sed nihil dolorum et laborum aperiam?</h4>
+            </div>    
+        </div>
+
+        <div class="teamMemberCard">
+            <img class="teamMemberPhoto" src="{% static 'picture_placeholder.png' %}" alt="Joshua">
+
+            <div class="teamMemberInfo">
+                <h1>Joshua Dean</h1>
+                <h3>Major: Software Engineering </h3>
+                <h4>Background: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloremque voluptates, nostrum iure veritatis autem iste reprehenderit earum. Atque molestiae neque vitae architecto? Qui sed nihil dolorum et laborum aperiam?</h4>
+            </div>    
+        </div>
+
+        <div class="teamMemberCard">
+            <img class="teamMemberPhoto" src="{% static 'kevin_kirby.jpg' %}" alt="Kevin">
+
+            <div class="teamMemberInfo">
+                <h1>Kevin Kirby</h1>
+                <h3>Major: Software Engineering </h3>
+                <h4>Background: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam doloremque voluptates, nostrum iure veritatis autem iste reprehenderit earum. Atque molestiae neque vitae architecto? Qui sed nihil dolorum et laborum aperiam?</h4>
+            </div>    
+        </div>
+    </section>
+</section>
 
 {% endblock content %}

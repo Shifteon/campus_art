@@ -6,19 +6,12 @@ html {
     width: 100%;
 }
 
-/* html, body {
-    height: 100%;
-    margin: 0;
-} */
-
 body {
     margin: 0;
     font-family: 'Noto Sans JP', sans-serif;
     /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;
-    height: 100vh;
 }
 
 h1,
@@ -163,9 +156,8 @@ header {
 }
 
 main {
-    min-height: 84.8%;
-    /* margin-bottom: 100px;
-    min-height: 100%; */
+    height: 100%;
+    margin-bottom: 100px;
 }
 
 .main {
@@ -180,10 +172,10 @@ main {
     grid-column: 2/3;
 }
 
-.side-thing {
+.side-filter {
     width: 20%;
-    height: 300px;
-    /* border: 2px solid black; */
+    min-height: 300px;
+    height: fit-content;
     background-color: #EAEAEA;
     justify-self: center;
     margin: 3em;
@@ -194,7 +186,6 @@ main {
     border-radius: .3em;
     text-align: center;
     overflow: hidden;
-    /* transition: 300ms; */
     z-index: 20;
 }
 
@@ -202,7 +193,7 @@ main {
     display: none;
 }
 
-.side-thing h2 {
+.side-filter h2 {
     background-color: #68AD44;
     color: white;
     margin-top: 0;
@@ -210,11 +201,11 @@ main {
     padding-top: .75em;
 }
 
-.side-thing label {
+.side-filter label {
     width: fit-content;
 }
 
-.side-thing select {
+.side-filter select {
     border-radius: 4px;
     padding: .2em;
     border: 1px solid #ccc;
@@ -364,9 +355,9 @@ hr {
 /* Detail Page CSS */
 .detail-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     width: 100%;
-    /* padding: 10px; */
+    padding: 10px;
     justify-content: center;
     /* align-items: center; */
 }
@@ -375,74 +366,62 @@ hr {
     /* background-color: rgba(255, 255, 255, 0.8); */
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     padding: 20px;
-    width: fit-content;
+    width: 500px;
     font-size: 15px;
     /* text-align: center; */
-  }
-
-  div.detail-grid-item:first-of-type {
-      justify-self: center;
   }
 
   .detail-grid-item p {
       font-size: 1.5em;
   }
 
-  .detail-grid-item img {
-      /* width: 90%; */
-      height: 90%;
-  }
-
-  .detail-grid-item p:first-of-type {
-      margin-bottom: 0;
-  }
-
-  /* .detail-grid-item p:last-of-type {
-      font-size: 1em;
-      margin-top: 0;
-      padding-left: 1em;
-  } */
-
-  span#artist-name {
-    font-style: italic;
-    font-size: 1em;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
 /* End of Detail Page CSS */
 
 
 /* About page CSS */
-.about-left-grid {
+#aboutPageContent {
+    padding: 1rem;
+}
+
+#aboutPageHero {
+    width: 870px;
+    margin: auto;
+}
+
+#aboutPageHero img{
+    max-width: 100%;
+}
+
+#aboutPageHero h1{
+    text-align: center;
+}
+
+#cardGrid{
     display: grid;
-    grid-template-columns: auto auto;
-    width: 100%;
-    padding: 50px 50px 30px 100px;
-    justify-content: left; 
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 90%;
+    margin: auto;
 }
 
-.about-right-grid {
+.teamMemberCard {
+    background-color: #EAEAEA;
     display: grid;
-    grid-template-columns: auto auto;
-    width: 90%;
-    padding: 30px 30px 30px 100px;
-    justify-content: right; 
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    grid-gap: 1rem;
+    border-radius: 15px;
 }
 
-.about-grid-item {
-    padding: 50px;
-    width: 80%;
-    font-size: 15px;
+.teamMemberPhoto {
+    max-width: 100%;
+    border-radius: 15px;
 }
 
-.about-center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    
+
+.teamMemberInfo h1{
+    text-align: center;
+    margin-bottom: 2rem;
 }
+
 /* End of about page CSS */

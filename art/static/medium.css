@@ -8,7 +8,7 @@
         display: block;
     }
     
-    .side-thing {
+    .side-filter {
         display: none;
     }
 
@@ -24,6 +24,8 @@
         background-color: #fffdff;
         z-index: 100;
         padding-bottom: 1em;
+        border-radius: .3em;
+        overflow: hidden;
     }
 
     .small-filter.display {
@@ -38,6 +40,10 @@
         border: 1px solid #ccc;
     }
 
+    .small-filter label {
+        margin-bottom: .2em;
+    }
+
     .small-filter select:first-of-type {
         margin-bottom: 1em;
     }
@@ -45,6 +51,10 @@
     .small-filter button, .small-filter div {
         padding: 1em;
         padding-bottom: 0;
+    }
+
+    .small-filter button {
+        margin-bottom: .2em;
     }
 
     .small-filter h3 {
@@ -84,4 +94,23 @@
     #filter-btn.clicked {
         background-color: #68AD44;
     }
+
+    #aboutPageHero {
+        width: 90%;
+    }
+
+    #cardGrid{
+        grid-template-columns: 1fr;
+    }
+
+    .teamMemberCard:nth-child(even) div{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .teamMemberCard:nth-child(even) img{
+        grid-column: 2;
+    }
+
+
 }
