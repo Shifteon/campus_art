@@ -83,12 +83,8 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
-            {{ 0|add_to_list }} <!-- Adding the int 0 to add_to_list clears the list. -->
             {% for category in artworks.categories.all %}
-              {{ category|add_to_list }}
-            {% endfor %}
-            {% for category in 1|return_list %} <!-- Returns the categories in the list. -->
-              <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
+            <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             {% endfor %}
           </div>
         </section>
@@ -135,14 +131,7 @@
       {% endfor %}
     </select>
     <button class="small-filter-category-btn drop-btn">Categories +</button>
-    <div class="small-filter-category">
-      {{ 0|add_to_list }}   <!-- Clears the list of categories on the building and floor. -->
-      {% for current_category in categories_for_filter %}
-        {% with current_category|get_cat_name as current_category %}
-          {{ current_category|add_to_list }}  <!-- Adds current category in the for loop to a list. -->
-        {% endwith %}
-      {% endfor %}
-      
+    <div class="small-filter-category">    
       {% for current_category in 0|return_list %}
         <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
       {% endfor %}
