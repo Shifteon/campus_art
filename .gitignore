@@ -3,3 +3,4 @@ secretkey.txt
 art/__pycache__
 campus_art/__pycache__
 art/templates/test.html
+convert_img.py
