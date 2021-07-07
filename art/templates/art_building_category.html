@@ -49,11 +49,8 @@
         <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
           {% for building in building_names %}
           {% if building.name|lower == request.path|get_current_building %}
-          <option value="{{ building.name }}" selected>{{ building.name }}</option>   <!-- Is there a way to send data from the option tags to the buildingSelect JS code? -->
+          <option value="{{ building.name }}" selected>{{ building.name }}</option>
           {% else %}
-          <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
-          data-currentfloor = "{{ request.path|get_current_floor }}"
-          data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
           <option value="{{ building.name }}">{{ building.name }}</option>
           {% endif %}
           {% endfor %}
@@ -88,10 +85,9 @@
           <div class="categories">
             {{ 0|add_to_list }} <!-- Adding the int 0 to add_to_list clears the list. -->
             {% for category in artworks.categories.all %}
-            <!-- <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a> -->
               {{ category|add_to_list }}
             {% endfor %}
-            {% for category in artwork|return_list %}
+            {% for category in 1|return_list %} <!-- Returns the categories in the list. -->
               <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             {% endfor %}
           </div>
@@ -132,19 +128,16 @@
     <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
       {% for building in building_names %}
       {% if building.name|lower == request.path|get_current_building %}
-      <option value="{{ building.name }}" selected>{{ building.name }}</option>   <!-- Is there a way to send data from the option tags to the buildingSelect JS code? -->
+      <option value="{{ building.name }}" selected>{{ building.name }}</option>
       {% else %}
-      <!-- <option value="{{ building.name }}" id="{{ building.name }}" 
-      data-currentfloor = "{{ request.path|get_current_floor }}"
-      data-numfloors = "{{ building.num_floors }}">{{ building.name }}</option> --> <!-- I do not know why I put the data tags in this option tag -->
       <option value="{{ building.name }}">{{ building.name }}</option>
       {% endif %}
       {% endfor %}
     </select>
     <button class="small-filter-category-btn drop-btn">Categories +</button>
     <div class="small-filter-category">
-      {% for category in category_names %}
-      <a class="category" href="#">{{ category.name }}</a>
+      {% for category in 1|return_list %}   <!-- Returns the categories in the list. -->
+        <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
       {% endfor %}
     </div>
   </section>
