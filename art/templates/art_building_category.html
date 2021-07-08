@@ -73,16 +73,16 @@
 
       </div>
     </section>
+
     <section class="card-grid art">
       {{ 0|is_new_floor }}
       {% for artworks in art_context %}
-      <!-- <small>{{ 0|return_last_floor }}</small> -->
-      <small>{{ artworks.floor|is_new_floor }}</small>
-      {% if artworks.floor|is_new_floor == False %}
+      {% if artworks.floor|is_new_floor == True %}
         <section class="floor-indicator">
           <h3>Floor {{ artworks.floor }}</h3>
         </section>
       {% endif %}
+      
       <article class="card">
         <a class="card-a" href="{{ artworks.get_absolute_url }}">
           <img src="../../../media/small_{{ artworks.picture }}" alt="{{ artworks.picture }}" loading="lazy">

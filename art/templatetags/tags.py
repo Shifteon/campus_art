@@ -15,7 +15,7 @@ def is_new_floor(current_floor):
     global last_floor_rendered
     if current_floor == 0:
         last_floor_rendered = 0
-        return 'First Run'
+        return ''
 
     # if (last_floor_rendered == 0):
     #     last_floor_rendered = current_floor
