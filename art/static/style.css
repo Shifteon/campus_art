@@ -252,6 +252,13 @@ main {
     display: none;
 }
 
+.floor-indicator {
+    grid-column: 1/-1;
+    width: 90%;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
 /* card styles */
 .card-grid {
     display: grid;
