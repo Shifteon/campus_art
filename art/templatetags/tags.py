@@ -3,6 +3,28 @@ from art.models import Category
 
 register = template.Library()
 current_list = []
+list_of_floors_displayed = []
+last_floor_rendered = 0
+
+@register.filter
+def return_last_floor(value):
+    return last_floor_rendered
+
+@register.filter
+def is_new_floor(current_floor):
+    global last_floor_rendered
+    if current_floor == 0:
+        last_floor_rendered = 0
+        return 'First Run'
+
+    # if (last_floor_rendered == 0):
+    #     last_floor_rendered = current_floor
+    if (last_floor_rendered != current_floor):
+        last_floor_rendered = current_floor
+        return True
+    else:
+        return False
+    # return last_floor_rendered, current_floor
 
 @register.filter
 def add_to_list(value):
