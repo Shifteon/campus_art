@@ -241,6 +241,7 @@ main {
 
 .filter-category.display {
     display: block;
+    padding-bottom: .5em;
 }
 
 .small-filter {
