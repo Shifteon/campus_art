@@ -3,33 +3,35 @@
 {% load static %}
 
 {% block content %}
-<script src="{% static 'detail_page.js' %}"></script>
-<div id="detail-grid" style="box-sizing: border-box;">
+<main>
+    <script src="{% static 'detail_page.js' %}"></script>
+    <div id="detail-grid" style="box-sizing: border-box;">
 
-    <img id="detail-image" src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
-    
+        <img id="detail-image" src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
 
-    <div id="detail-info">
-        <h1 id="title">{{ object.title }}</h1>
-        {% if object.artist_name != None %}
-        <h3 id="artist-name">{{ object.artist_name }} </h3>
-        {% endif %}
-        {% if object.year_created != None %}
-        <span id="year-created">{{ object.year_created }}</span>
-        {% endif %}
-        {% if object.description != None %}
-        <p id="description">{{ object.description }}</p>
-        {% endif %}
-        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex corporis harum, quidem cumque qui at
-            illo, quaerat quod quisquam veritatis reiciendis explicabo inventore optio quos quae exercitationem.
-            Inventore, temporibus assumenda voluptas tempora dicta reiciendis laborum quam aperiam quis!
-            Eligendi ab ratione vitae odit molestias distinctio architecto laborum quaerat voluptatem
-            laboriosam.</p> -->
+
+        <div id="detail-info">
+            <h1 id="title">{{ object.title }}</h1>
+            {% if object.artist_name != None %}
+            <h3 id="artist-name">{{ object.artist_name }} </h3>
+            {% endif %}
+            {% if object.year_created != None %}
+            <span id="year-created">{{ object.year_created }}</span>
+            {% endif %}
+            {% if object.description != None %}
+            <p id="description">{{ object.description }}</p>
+            {% endif %}
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex corporis harum, quidem cumque qui at
+                illo, quaerat quod quisquam veritatis reiciendis explicabo inventore optio quos quae exercitationem.
+                Inventore, temporibus assumenda voluptas tempora dicta reiciendis laborum quam aperiam quis!
+                Eligendi ab ratione vitae odit molestias distinctio architecto laborum quaerat voluptatem
+                laboriosam.</p> -->
+        </div>
+        <p id="expand">Click to expand</p>
     </div>
-    <p id="expand">Click to expand</p>
-</div>
-<div id="viewport_size">
-    <img id="large-image" src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
-    <p id="shrink">Click to minimize</p>
-</div>
+    <div id="viewport_size">
+        <img id="large-image" src="../../../media/{{ object.picture }}" alt="{{ object.picture }}">
+        <p id="shrink">Click to minimize</p>
+    </div>
+</main>
 {% endblock %}
