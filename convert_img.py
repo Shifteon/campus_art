@@ -33,3 +33,5 @@ if __name__ == '__main__':
 
         image.save(os.path.join(write_path, f))
         print("Image saved at " + write_path + "/" + f)
+    
+    print("Image Scaling Completed.")
