@@ -44,6 +44,5 @@ Quit the server with CTRL-BREAK.
 
 # Future Work
 
-* Create smaller versions of images
 * Add more filter options (By artist, Name, etc.)
 * Add artwork from more buildings
