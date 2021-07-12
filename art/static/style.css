@@ -60,6 +60,11 @@ nav {
     font-size: 1.5em;
 }
 
+#logo-box h1 a {
+    text-decoration: none;
+    color: white;
+}
+
 #navigation {
     margin: 0;
     list-style: none;
@@ -414,7 +419,7 @@ hr {
 }
 
 #viewport_size{
-    height: 88.25vh;
+    height: 100vh;
     display: none;
     text-align: center;
 }
@@ -428,6 +433,7 @@ hr {
 
 #shrink {
     margin: 0;
+    /* margin-bottom: 5em; */
 }
 /* End of Detail Page CSS */
 

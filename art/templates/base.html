@@ -25,8 +25,8 @@
     <nav>
       <div class="nav">
         <section id="logo-box">
-          <img src="{% static 'TwoLineMonogram_white_Medium.png' %}" alt="logo">
-          <h1>Art</h1>
+          <a href="{% url 'art_map' %}"><img src="{% static 'TwoLineMonogram_white_Medium.png' %}" alt="logo"></a>
+          <h1><a href="{% url 'art_map' %}">Art</a></h1>
         </section>
         <ul id="navigation">
           <li><a class="ham" href="#">☰</a></li>
