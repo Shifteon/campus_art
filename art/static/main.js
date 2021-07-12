@@ -4,14 +4,6 @@ function buildingsDropdown() {
 
     nav.addEventListener('click', () => {
         dropDown.classList.toggle('display');
-
-        window.onclick = (event) => {
-            console.log("Target: " + event.target);
-            if (event.target == dropDown) {
-                console.log("hi");
-                dropDown.classList.remove('display');
-            }
-        }
     });
 }
 
