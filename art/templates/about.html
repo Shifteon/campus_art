@@ -5,33 +5,40 @@
 {% block content %}
 <section id="aboutPageContent">
     <div id="aboutPageHero">
-        <hr>
-        <h1>What is Campus Art?</h1>
-        <img src="{% static 'laptopsOnDesk.jpg' %}" alt="sample">
-        <h2>
+        <h1>About Us</h1>
+        <img src="{% static 'Group Picture.jpg' %}" alt="sample">
+        
             <!-- What's the point of art if you can't see it, 
             and how are you going to see it if you can't find it?  -->
-            Art is meant to be seen.
+            <!-- Art is meant to be seen.
             The BYU-I campus is home to many great pieces of art, 
-            but it is often difficult to find that art, and once you find it and your curiosity peaks, 
+            but it is often difficult to find that art. Once you find it and your curiosity peaks, 
             it's impossible to find any information about it! This is where we come in. 
             Our team has created an easy-to-use web app that allows you to find and learn about all the art on the 
             BYU-I campus. Using the interactive map you can find buildings that contain artwork. 
             Once you've selected a building, the artwork and information are just one click away. 
-            With this web app, we hope to give everyone a chance to learn about the great art you can find on the BYU-I campus.
-        </h2>
+            With this web app, we hope to give everyone a chance to learn about the great art you can find on the BYU-I campus. -->
+        <p class="groupDescription">
+            We are a group of five students attending BYU-Idaho. Walking around campus, we noticed that the artwork on campus
+            can be a bit confusing. There is no way to view the art online or to locate specific paintings.
+        </p>
+        <p class="groupDescription">
+            We decided to change that. We made this Campus Art page to help the local students of BYU-Idaho locate their favorite art.
+            We used Django as the framework for the website, and made it modular so we could gradually add more and more buildings to
+            the database. We learned a lot about building websites from frameworks, and had to go through a large number of 
+            trial-and-error processes to get it working right.
+        </p>
         <hr>
         <br>
         <br>
         <br>
-        <br>
-        <h1>About Us</h1>
+        <h1>The Team</h1>
         <hr>
     </div>
 
     <section id="cardGrid">
         <div class="teamMemberCard">
-            <img class="teamMemberPhoto" src="{% static 'ben.jpg' %}" alt="Ben">
+            <img class="teamMemberPhoto" src="{% static 'Ben 2.jpg' %}" alt="Ben">
 
             <div class="teamMemberInfo">
                 <h1>Ben Wyatt</h1>
@@ -45,7 +52,7 @@
         </div>
 
         <div class="teamMemberCard">
-            <img class="teamMemberPhoto" src="{% static 'kyler_mellor.jpg' %}" alt="Kyler">
+            <a href="https://www.github.com/Melon-Catastrophe" target="_blank"><img class="teamMemberPhoto" src="{% static 'kyler_mellor.jpg' %}" alt="Kyler"></a>
 
             <div class="teamMemberInfo">
                 <h1>Kyler Mellor</h1>
@@ -53,7 +60,7 @@
                 <h4>Background: Kyler is a unicycle-riding nerd that enjoys programming in his free time. He is a student at Brigham Young University-Idaho 
                     studying Software Engineering. He enjoys learning new things, especially when it involves more efficient ways to program.
                     Kyler is currently learning how to create 3D video games.</h4>
-            </div>    
+                </div>    
         </div>
 
         <div class="teamMemberCard">
