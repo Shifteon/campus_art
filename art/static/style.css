@@ -401,7 +401,7 @@ hr {
     margin-bottom: auto;
 }
 
-#title{
+#title {
     font-size: 3rem;
     margin: 0;
 }
@@ -481,5 +481,12 @@ hr {
 .teamMemberInfo h1{
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.groupDescription {
+    text-align: left;
+    text-indent: 30px;
+    font-size: large;
+    
 }
 /* End of about page CSS */
