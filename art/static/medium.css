@@ -104,6 +104,24 @@
     grid-row: 1;
     max-width: 404px;
 }
+
+#detail-image{
+    max-width: 100%;
+    grid-row: 1/2;
+}
+
+#expand {
+    grid-row: 2/3;
+}
+
+#detail-info {
+    grid-row: 3/4;
+    padding: 1em;
+}
+
+#description {
+    margin-top: .5em;
+}
 /* End Detail Page */
 
 /* About Page */
