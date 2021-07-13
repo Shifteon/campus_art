@@ -96,6 +96,15 @@ def get_current_building(url):
     return current_building.lower()
 
 @register.filter
+def get_current_category(url):
+    first_slash = url.find('/')
+    second_slash = url.find('/', first_slash + 1)
+    third_slash = url.find('/', second_slash + 1)
+
+    current_building = url[second_slash + 1:third_slash]
+    return current_building.lower()
+
+@register.filter
 def get_current_floor(url):
     # Given a url, returns the floor that the user is currently viewing artwork in.
     first_slash = url.find('/')
