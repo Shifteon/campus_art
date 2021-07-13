@@ -33,10 +33,12 @@
     <script src="https://js.arcgis.com/4.19/"></script>
 
     <script>
+        // Start the map and import the tools I need
         require(["esri/Map", "esri/views/MapView",
             "esri/Graphic", "esri/layers/GraphicsLayer"
         ], function (Map, MapView, Graphic, GraphicsLayer) {
 
+            // list out the locations(buildings)
             const buildings = [
                 {
                     "title": "I-Center",
@@ -130,11 +132,12 @@
                 }
             ]
 
-
+            // load the map
             const map = new Map({
                 basemap: "topo-vector" // Basemap layer service
             });
 
+            // Get the map view I want
             const view = new MapView({
                 map: map,
                 center: [-111.78380253251153, 43.817685729697516], // Longitude, latitude
@@ -180,6 +183,7 @@
                     "title": buildings[index].title,
                     "content": content
                 }
+                // display the popup
                 graphicsLayer.add(pointGraphic);
             }
 
