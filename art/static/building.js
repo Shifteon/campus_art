@@ -85,9 +85,9 @@ function smallFilter() {
         filter.classList.toggle('display');
         btn.classList.toggle('clicked');
         if (btn.classList.contains('clicked')) {
-            btn.innerHTML = '-';
+            btn.innerHTML = '<span class="material-icons">clear</span>';
         } else {
-            btn.innerHTML = '+';
+            btn.innerHTML = '<span class="material-icons">add</span>';
         }
     });
 
