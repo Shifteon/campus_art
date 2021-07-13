@@ -398,7 +398,7 @@ hr {
     background-color: #EAEAEA;
     border-radius: 15px;
     box-shadow: 5px 5px 8px #adadad;
-    margin-bottom: auto;
+    margin: auto 0;
 }
 
 #title {

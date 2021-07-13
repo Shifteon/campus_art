@@ -4,26 +4,34 @@
 {% block title %}Art Display{% endblock %}
 
 {% block content %}
-{% if request.path|get_current_building in building_names|lower %}
+{% if request.path|get_current_building in building_names|lower and request.path|get_current_category in category_names|lower and cfloor_in_cbuilding %}
 
 {% load static %}
+
+<!-- This html template displays the list of artworks for a specific building, floor, and category. -->
 
 <main>
   <script src="{% static 'building.js' %}"></script>
   <header>
     <img id="i-center-img" src="{% static 'i_center(3).jpg' %}" alt="I-Center">
+    
+    <!-- Uses a for loop to display the building name with proper capitalization -->
     {% for i in building_names %}
     {% if i.name|lower == request.path|get_current_building %} <!-- Returns the building name with proper capitalization -->
     <h1 class="building-name">{{ i }}</h1>
     {% endif %}
     {% endfor %}
   </header>
+
   <div class="main">
+    
+    <!-- Displays the filter -->
     <section class="side-filter">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <div class="filter-dropdown">
+        
+        <!-- Using a for loop to display floors, using an if statement to change 'selected' on option -->
         <label for="floor">Floor</label>
-        <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
         <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
           {% for i in building_names %}
           {% if i.name|lower == request.path|get_current_building %}
@@ -45,6 +53,8 @@
           {% endif %}
           {% endfor %}
         </select>
+
+        <!-- The select tag for the Buildings selection box. A javascript function automatically changes the url when selecting a new building -->
         <label for="building">Buildings</label>
         <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
           {% for building in building_names %}
@@ -56,6 +66,7 @@
           {% endfor %}
         </select>
         </div>
+
       <button class="filter-category-btn drop-btn">Categories +</button>
       <div class="filter-category">
         
@@ -74,15 +85,18 @@
       </div>
     </section>
 
+    <!-- This section contains the card display of the artworks -->
     <section class="card-grid art">
-      {{ 0|is_new_floor }}
+      {{ 0|is_new_floor }}  <!-- Sets the floor variable to 0 -->
       {% for artworks in art_context %}
-      {% if artworks.floor|is_new_floor == True %}
+      {% if artworks.floor|is_new_floor == True %}  
+      <!-- If the list is current at a different floor than previously, sets the last_floor_rendered variable in the tags.py file -->
         <section class="floor-indicator">
-          <h3>Floor {{ artworks.floor }}</h3>
+          <h3>Floor {{ artworks.floor }}</h3> <!-- Show an hr tag and the Floor number between pictures of different floors -->
         </section>
       {% endif %}
       
+      <!-- This section displays the cards of artworks -->
       <article class="card">
         <a class="card-a" href="{{ artworks.get_absolute_url }}">
           <img src="../../../media/small_{{ artworks.picture }}" alt="{{ artworks.picture }}" loading="lazy">
@@ -91,12 +105,14 @@
           <h2>{{ artworks.title }}</h2>
           <button class="category-btn drop-btn">Categories +</button>
           <div class="categories">
+            <!-- Loops through and displays all the categories in the specific artwork -->
             {% for category in artworks.categories.all %}
             <a class="category" href="{{ request.path|change_category:category.name }}">{{ category.name }}</a>
             {% endfor %}
           </div>
         </section>
         <section class="card-footer">
+          <!-- Displays the artist name, if available -->
           {% if artworks.artist_name %}
           <small>{{ artworks.artist_name }}</small>
           {% endif %}
@@ -106,14 +122,17 @@
     </section>
   </div>
 
+  <!-- This section is responsible for displaying the filter on phones and smaller screens -->
   <section class="small-filter">
     <h3>Filter</h3>
     <label for="floor">Floor</label>
     <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
+      <!-- Only displays the floors available in the currently selected buildings -->
       {% for i in building_names %}
         {% if i.name|lower == request.path|get_current_building %}
           {% for x in i.num_floors|int_to_list:i.name %}
             {% if x == request.path|get_current_floor %}
+              <!-- Displays the current floor as being selected in the floor option tag-->
               {% if x == 0 %}
               <option value="{{ x }}" selected>All Floors</option>
               {% else %}
@@ -130,6 +149,8 @@
         {% endif %}
         {% endfor %}
     </select>
+
+    <!-- Displays the select/option tags for selecting the building -->
     <label for="building">Buildings</label>
     <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
       {% for building in building_names %}
@@ -141,6 +162,8 @@
       {% endfor %}
     </select>
     <button class="small-filter-category-btn drop-btn">Categories +</button>
+
+    <!-- Displays all categories available in the currently selected building and floor -->
     <div class="small-filter-category">    
       {% for current_category in 0|return_list %}
         <a class="category" href="{{ request.path|change_category:current_category }}">{{ current_category }}</a>
@@ -151,16 +174,35 @@
   
   <script src="{% static 'filter.js' %}"></script>
 </main>
+
+
 {% else %}
+<!-- If the items in the url specified do not match any buildings, categories, or floors, then display an appropriate error -->
 <main>
   <h1>Error 404 Not Found</h1>
-  <h2>Building is not yet in the database: {{ request.path|get_current_building }} </h2>
+  <!-- Displays error if building is not in database -->
+  {% if request.path|get_current_building not in building_names|lower %}
+    <h2>Building is not yet in the database: {{ request.path|get_current_building }}</h2>
+  {% endif %}
+  <!-- Displays error if category is not in database -->
+  {% if request.path|get_current_category not in category_names|lower %}
+    <h2>Category is not yet in the database: {{ request.path|get_current_category }}</h2>
+  {% endif %}
+  <!-- TODO: Think about adding code that displays error if selected category filter does not show any artworks -->
+  <!-- Displays error if floor does not exist in selected building -->
+  {% if not cfloor_in_cbuilding %}
+    {% for building in building_names %}
+    {% if building.name|lower == request.path|get_current_building %} <!-- Returns the building name with proper capitalization -->
+        <h2>Floor {{ request.path|get_current_floor }} is not available in Building {{ building.name }}.</h2>
+    {% endif %}
+    {% endfor %}
+  {% endif %}
 </main>
 {% endif %}
 
 <!-- <center>
   <h5>
-   This is here to test Django code.
+    This is a place to test Django code.
   </h5>
 </center> -->
 

@@ -24,19 +24,29 @@ class ArtBuildingCategoryView(ListView):
             context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'])
             context['categories_for_filter'] = building_art.values('categories').order_by('categories')
             # Specifying .order_by(categories__name) to the context above will order by the 'name' field in the 'categories' model. 
-            # I added a default ordering to the Categories model. We still need to specify to order by categories,
+            #  I added a default ordering to the Categories model. We still need to specify to order by categories,
             #  but the categories model will now order by the 'name' field by default (instead of order inserted into database).
-            # TODO: Remove the alphabetize template tags that I wrote to alphabetize the categories.
         else:
             context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'], floor=self.kwargs['floor'])
             context['categories_for_filter'] = building_art.filter(floor=self.kwargs['floor']).values('categories').order_by('categories')
 
+        # Sets is_floor_in_building to True if the floor in the url is in the building that is in the url, otherwise: False.
+        for building in Building_Name.objects.all():
+            is_floor_in_building = False
+            if building.name.lower() == self.kwargs['building'].lower():
+                if self.kwargs['building'].lower() == "all":
+                    if int(self.kwargs['floor']) in range(0, 5):    # Range of 0-4 inclusive
+                        is_floor_in_building = True
+                if int(self.kwargs['floor']) in range(0, building.num_floors + 1):
+                    is_floor_in_building = True
+                break
+        
+        context['cfloor_in_cbuilding'] = is_floor_in_building
         context['category_names'] = Category.objects.all().order_by('name')
         context['building_names'] = Building_Name.objects.all().order_by('name')
+        
         return context
 
-# Add another view, use an if statement, change database
-# What does this comment mean and who wrote it? Curiously, Kyler
 
 class BuildingListView(ListView):
     model = Building_Name
