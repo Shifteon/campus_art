@@ -22,11 +22,15 @@
     {% endif %}
     {% endfor %}
   </header>
+
   <div class="main">
+    
+    <!-- Displays the filter -->
     <section class="side-filter">
       <h2>Filter <span id="filter-extend">+</span></h2>
       <div class="filter-dropdown">
         <label for="floor">Floor</label>
+
         <!-- Using a for loop to display floors, using an if statemennt to change 'selected' on option -->
         <select name="floor" id="floor" onchange="javascript:floorSelect(this)">
           {% for i in building_names %}
@@ -49,6 +53,8 @@
           {% endif %}
           {% endfor %}
         </select>
+
+        <!-- The select tag for the Buildings selection box. A javascript function automatically changes the url when selecting a new building -->
         <label for="building">Buildings</label>
         <select name="building" id="building" onchange="javascript:buildingSelect(this, '{% for building in building_names %}{{ building.name }}.{% endfor %}')" data-test="testing">
           {% for building in building_names %}
@@ -121,6 +127,8 @@
       <!-- Only displays the floors available in the currently selected buildings -->
       {% for i in building_names %}
         {% if i.name|lower == request.path|get_current_building %}
+        testing {% for p in i.num_floors|int_to_list:i.name %}
+        {{ p }} {% endfor %}
           {% for x in i.num_floors|int_to_list:i.name %}
             {% if x == request.path|get_current_floor %}
               <!-- Displays the current floor as being selected in the floor option tag-->
