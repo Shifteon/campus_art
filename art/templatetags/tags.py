@@ -17,18 +17,15 @@ def is_new_floor(current_floor):
         last_floor_rendered = 0
         return ''
 
-    # if (last_floor_rendered == 0):
-    #     last_floor_rendered = current_floor
     if (last_floor_rendered != current_floor):
         last_floor_rendered = current_floor
         return True
     else:
         return False
-    # return last_floor_rendered, current_floor
 
 @register.filter
 def add_to_list(value):
-    # Add code here to check for category objects, then extract name from them. Then add to list. -Kyler
+    # This function adds the names of categories available in the current building and floor into a list.
     if value == 0:
         current_list.clear()
     else:
