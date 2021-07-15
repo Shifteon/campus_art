@@ -21,7 +21,7 @@ class ArtBuildingCategoryView(ListView):
         building_art = Artwork.objects.filter(building__name__contains=self.kwargs['building']).order_by('floor')
 
         if self.kwargs['floor'] == '0':   # Load all art in the building if the floor in url is zero.
-            context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category'])
+            context['art_context'] = building_art.filter(categories__name__contains=self.kwargs['category']).order_by('floor', 'title')
             context['categories_for_filter'] = building_art.values('categories').order_by('categories')
             # Specifying .order_by(categories__name) to the context above will order by the 'name' field in the 'categories' model. 
             #  I added a default ordering to the Categories model. We still need to specify to order by categories,
